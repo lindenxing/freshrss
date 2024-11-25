@@ -17,6 +17,7 @@ kill_timeout = '5s'
 [env]
   CRON_MIN = '*/20'
   TZ = 'Asia/Shanghai'
+  FRESHRSS_ENV_THEME = 'Mapco'
 
 [[mounts]]
   source = 'freshrss_data'
