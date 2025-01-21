@@ -57,13 +57,14 @@ return array(
 			'prepend' => 'Mevcut içeriğin öncesine ekle',
 			'replace' => 'Mevcut içerikle değiştir',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Makale içeriğini yüklerken çerez kullan',
 		'css_cookie_help' => 'Örnek: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Dikkat, daha çok zaman gerekir!',
 		'css_path' => 'Makaleleri kendi CSS görünümü ile göster',
 		'css_path_filter' => array(
 			'_' => 'Kaldırılacak elemana ait CSS seçicisi',
-			'help' => 'CSS seçicisi şu şekilde olabilir: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'CSS seçicisi şu şekilde olabilir: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Tanım',
 		'empty' => 'Bu akış boş. Lütfen akışın aktif olduğuna emin olun.',
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'Hiçbir akış seçilmedi.',
 		'number_entries' => '%d makale',
 		'open_feed' => '%s akışını aç',
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Görünürlük',
 			'archived' => 'Gösterme (arşivlenmiş)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Dinamik OPML ekle',
 		'add_feed' => 'Akış ekle',
 		'add_label' => 'Etiket ekle',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => 'Etiket sil',
 		'feed_management' => 'RSS akış yönetimi',
 		'rename_label' => 'Etiketi yeniden adlandır',

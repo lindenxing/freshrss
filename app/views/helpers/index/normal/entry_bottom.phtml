@@ -39,7 +39,7 @@
 		<div class="item-element dropdown dynamictags">
 			<div id="dropdown-labels-<?= $this->entry->id() ?>" class="dropdown-target"></div>
 			<a class="dropdown-toggle" href="#dropdown-labels-<?= $this->entry->id() ?>">
-				<?= _i('label') ?><?= _t('index.menu.tags') ?>
+				<?= _i('label') ?><span class="dropdown-label"><?= _t('index.menu.tags') ?></span>
 			</a>
 		</div>
 	</li><?php
@@ -50,7 +50,7 @@
 		<div class="item-element dropdown">
 			<div id="dropdown-tags-<?= $this->entry->id() ?>" class="dropdown-target"></div>
 			<a class="dropdown-toggle" href="#dropdown-tags-<?= $this->entry->id() ?>">
-				<?= _i('tag') ?><?= _t('index.tag.related') ?>
+				<?= _i('tag') ?><span class="dropdown-label"><?= _t('index.tag.related') ?></span>
 			</a>
 			<ul class="dropdown-menu">
 				<li class="dropdown-header"><?= _t('index.tag.related') ?></li>
@@ -68,7 +68,7 @@
 		?><div class="item-element dropdown">
 			<div id="dropdown-share-<?= $this->entry->id() ?>" class="dropdown-target"></div>
 			<a class="dropdown-toggle" href="#dropdown-share-<?= $this->entry->id() ?>">
-				<?= _i('share') ?><?= _t('index.share') ?>
+				<?= _i('share') ?><span class="dropdown-label"><?= _t('index.share') ?></span>
 			</a>
 			<?php /* entry_share_menu */ ?>
 		</div>

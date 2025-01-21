@@ -850,7 +850,7 @@ th {
 	border: none;
 }
 
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: #fff;
 	border-color: #ecf0f1;
 }

@@ -176,6 +176,7 @@ class Minz_Migrator
 	public function migrations(): array {
 		$migrations = $this->migrations;
 		uksort($migrations, 'strnatcmp');
+		/** @var array<string,callable> $migrations */
 		return $migrations;
 	}
 
@@ -237,7 +238,7 @@ class Minz_Migrator
 	 * considered as successful. It is considered as good practice to return
 	 * true on success though.
 	 *
-	 * @return array<string|bool> Return the results of each executed migration. If an
+	 * @return array<string,bool|string> Return the results of each executed migration. If an
 	 *               exception was raised in a migration, its result is set to
 	 *               the exception message.
 	 */
@@ -251,7 +252,7 @@ class Minz_Migrator
 
 			try {
 				$migration_result = $callback();
-				$result[$version] = $migration_result;
+				$result[$version] = (bool)$migration_result;
 			} catch (Exception $e) {
 				$migration_result = false;
 				$result[$version] = $e->getMessage();

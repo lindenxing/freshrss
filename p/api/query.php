@@ -118,7 +118,7 @@ try {
 	FreshRSS_Context::updateUsingRequest(false);
 	Minz_Request::_param('search', $userSearch->getRawInput());	// Restore user search
 	$view->entries = FreshRSS_index_Controller::listEntriesByContext();
-} catch (Minz_Exception $e) {
+} catch (Minz_Exception) {
 	Minz_Error::error(400, 'Bad user query!');
 	die();
 }
@@ -134,7 +134,7 @@ switch ($type) {
 			Minz_Error::error(404, "Category {$id} not found!");
 			die();
 		}
-		$view->categories = [ $cat->id() => $cat ];
+		$view->categories = [$cat->id() => $cat];
 		break;
 	case 'f':	// Feed
 		$feed = FreshRSS_Category::findFeed(FreshRSS_Context::categories(), $id);
@@ -142,7 +142,7 @@ switch ($type) {
 			Minz_Error::error(404, "Feed {$id} not found!");
 			die();
 		}
-		$view->feeds = [ $feed->id() => $feed ];
+		$view->feeds = [ $feed ];
 		$view->categories = [];
 		break;
 	default:

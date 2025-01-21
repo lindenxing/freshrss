@@ -6,9 +6,9 @@ declare(strict_types=1);
  */
 class FreshRSS_Import_Service {
 
-	private FreshRSS_CategoryDAO $catDAO;
+	private readonly FreshRSS_CategoryDAO $catDAO;
 
-	private FreshRSS_FeedDAO $feedDAO;
+	private readonly FreshRSS_FeedDAO $feedDAO;
 
 	/** true if success, false otherwise */
 	private bool $lastStatus;
@@ -58,7 +58,7 @@ class FreshRSS_Import_Service {
 
 		// Get the categories by names so we can use this array to retrieve
 		// existing categories later.
-		$categories = $this->catDAO->listCategories(false) ?: [];
+		$categories = $this->catDAO->listCategories(prePopulateFeeds: false);
 		$categories_by_names = [];
 		foreach ($categories as $category) {
 			$categories_by_names[$category->name()] = $category;
@@ -149,7 +149,7 @@ class FreshRSS_Import_Service {
 		try {
 			// Create a Feed object and add it in DB
 			$feed = new FreshRSS_Feed($url);
-			$category->addFeed($feed);
+			$feed->_category($category);
 			$feed->_name($name);
 			$feed->_website($website);
 			$feed->_description($description);
@@ -180,8 +180,15 @@ class FreshRSS_Import_Service {
 				$feed->_pathEntries(Minz_Helper::htmlspecialchars_utf8($feed_elt['frss:cssFullContent']));
 			}
 
-			if (isset($feed_elt['frss:cssFullContentFilter'])) {
-				$feed->_attribute('path_entries_filter', $feed_elt['frss:cssFullContentFilter']);
+			if (isset($feed_elt['frss:cssFullContentConditions'])) {
+				$feed->_attribute(
+					'path_entries_conditions',
+					preg_split('/\R/u', $feed_elt['frss:cssFullContentConditions']) ?: []
+				);
+			}
+
+			if (isset($feed_elt['frss:cssContentFilter']) || isset($feed_elt['frss:cssFullContentFilter'])) {
+				$feed->_attribute('path_entries_filter', $feed_elt['frss:cssContentFilter'] ?? $feed_elt['frss:cssFullContentFilter']);
 			}
 
 			if (isset($feed_elt['frss:filtersActionRead'])) {
@@ -312,6 +319,7 @@ class FreshRSS_Import_Service {
 					$this->lastStatus = false;
 				} else {
 					$feed->_id($id);
+					$category->addFeed($feed);
 					return $feed;
 				}
 			}

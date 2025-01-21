@@ -3,6 +3,7 @@ ot = "ot"
 Ths2 = "Ths2"
 
 [default.extend-words]
+ANDS = "ANDS"
 referer = "referer"
 
 [files]

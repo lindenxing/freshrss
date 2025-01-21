@@ -14,6 +14,16 @@ return array(
 	'about' => array(
 		'_' => 'FreshRSSについて',
 		'agpl3' => '<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL 3</a>',	// IGNORE
+		'bug_reports' => array(
+			'environment_information' => array(
+				'_' => 'System information',	// TODO
+				'browser' => 'Browser',	// TODO
+				'database' => 'Database',	// TODO
+				'server_software' => 'Server software',	// TODO
+				'version_frss' => 'FreshRSS version',	// TODO
+				'version_php' => 'PHP version',	// TODO
+			),
+		),
 		'bugs_reports' => 'バグレポート',
 		'credits' => 'クレジット',
 		'credits_content' => 'いくつかのデザイン要素は<a href="http://twitter.github.io/bootstrap/">Bootstrap</a>に由来しますが、FreshRSSはこのフレームワークを使用していません。<a href="https://gitlab.gnome.org/Archive/gnome-icon-theme-symbolic">アイコン</a>は<a href="https://www.gnome.org/">GNOMEプロジェクト</a>に由来します。<em>Open Sans</em>フォントは<a href="https://fonts.google.com/specimen/Open+Sans">Steve Matteson</a>によって作成されました。FreshRSSはPHPフレームワークの<a href="https://framagit.org/marienfressinaud/MINZ">Minz</a>を採用しています。',
@@ -27,6 +37,11 @@ return array(
 	),
 	'feed' => array(
 		'empty' => '表示できる記事がありません',
+		'received' => array(
+			'before_yesterday' => '一昨日以前',
+			'today' => '今日',
+			'yesterday' => '昨日',
+		),
 		'rss_of' => '%s のRSSフィード',
 		'title' => 'メイン',
 		'title_fav' => 'お気に入り',
@@ -60,6 +75,18 @@ return array(
 		'reader_view' => 'リーディングビュー',
 		'rss_view' => 'RSSフィード',
 		'search_short' => '検索',
+		'sort' => array(
+			'_' => '並べ替え',
+			'date_asc' => '公開日順 1→9',
+			'date_desc' => '公開日順 9→1',
+			'id_asc' => '新着を最後に並べる',
+			'id_desc' => '新着を最初に並べる',
+			'link_asc' => 'リンクURL順 A→Z',
+			'link_desc' => 'リンクURL順 Z→A',
+			'rand' => 'ランダムに並べる',
+			'title_asc' => 'タイトル順 A→Z',
+			'title_desc' => 'タイトル順 Z→A',
+		),
 		'starred' => 'お気に入りを表示する',
 		'stats' => '統計',
 		'subscription' => '購読フィードの管理',

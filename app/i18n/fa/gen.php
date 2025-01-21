@@ -14,10 +14,11 @@ return array(
 	'action' => array(
 		'actualize' => ' فیدها را به روز کنید',
 		'add' => ' اضافه کنید',
-		'back' => '← به عقب برگرد',
 		'back_to_rss_feeds' => '← به فیدهای RSS خود برگردید',
 		'cancel' => ' لغو',
 		'create' => ' ایجاد کنید',
+		'delete_all_feeds' => 'Delete all feeds',	// TODO
+		'delete_errored_feeds' => 'Delete feeds with errors',	// TODO
 		'delete_muted_feeds' => ' فیدهای خاموش را حذف کنید',
 		'demote' => ' تنزل دادن',
 		'disable' => ' غیر فعال کردن',
@@ -210,6 +211,7 @@ return array(
 		'archiveIS' => 'archive.is',	// IGNORE
 		'archiveORG' => ' archive.org',
 		'archivePH' => ' archive.ph',
+		'bluesky' => 'Bluesky',	// TODO
 		'buffer' => ' بافر',
 		'clipboard' => ' کلیپ بورد',
 		'diaspora' => ' دیاسپورا*',

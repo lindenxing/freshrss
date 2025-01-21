@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Add before existing content',	// TODO
 			'replace' => 'Replace existing content',	// TODO
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Use Cookies when fetching the article content',	// TODO
 		'css_cookie_help' => 'Example: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',	// TODO
 		'css_help' => 'קבלת הזנות RSS קטומות	(זהירות, לוקח זמן רב יותר!)',
 		'css_path' => 'נתיב הCSS של המאמר באתר המקורי',
 		'css_path_filter' => array(
 			'_' => 'CSS selector of the elements to remove',	// TODO
-			'help' => 'A CSS selector may be a list such as: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',	// TODO
+			'help' => 'A CSS selector may be a list such as: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',	// TODO
 		),
 		'description' => 'תיאור',
 		'empty' => 'הזנה זו ריקה. אנא ודאו שהיא עדיין מתוחזקת.',
-		'error' => 'הזנה זו נתקלה בשגיאה, אנא ודאו שהיא תקינה ואז נסו שנית.',
+		'error' => 'הזנה זו נתקלה בשגיאה, אנא ודאו שהיא תקינה ואז נסו שנית.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Download',	// TODO
 			'help' => 'XML file (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',	// TODO
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'אף הזנה לא נבחרה.',
 		'number_entries' => '%d מאמרים',
 		'open_feed' => 'Open feed %s',	// TODO
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Visibility',	// TODO
 			'archived' => 'Do not show (archived)',	// TODO
@@ -215,7 +217,7 @@ return array(
 			'show_rendered' => 'Show content',	// TODO
 		),
 		'show' => array(
-			'all' => 'Show all feeds',	// TODO
+			'all' => 'All feeds',	// TODO
 			'error' => 'Show only feeds with errors',	// TODO
 		),
 		'showing' => array(
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Add dynamic OPML',	// TODO
 		'add_feed' => 'Add a feed',	// TODO
 		'add_label' => 'Add a label',	// TODO
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => 'Delete a label',	// TODO
 		'feed_management' => 'ניהול הזנות RSS',
 		'rename_label' => 'Rename a label',	// TODO

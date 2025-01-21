@@ -129,7 +129,7 @@ abstract class CliOptionsParser {
 
 	/**
 	 * @param array<string> $userInputs
-	 * @return array<string>
+	 * @return list<string>
 	 */
 	private function getAliasesUsed(array $userInputs, string $regex): array {
 		$foundAliases = [];

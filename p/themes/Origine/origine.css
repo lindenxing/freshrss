@@ -72,6 +72,7 @@
 
 	--border-color: #ddd;
 	--border-color-shadow-side: #ccc;
+	--frss-border-color: var(--border-color);
 	--contrast-border-color-active: #0062be;
 
 	--form-element-font-color-focus: #0062be;
@@ -1004,7 +1005,7 @@ a:hover .icon {
 	border: none;
 }
 
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: var(--background-color-light);
 	border-color: var(--border-color);
 }
@@ -1154,6 +1155,11 @@ a:hover .icon {
 
 	.dropdown-menu .dropdown-section:last-child {
 		margin-bottom: 3rem;
+	}
+
+	#nav_menu_read_all .btn {
+		border-left: 1px solid var(--border-color-shadow-side);
+		border-radius: 3px;
 	}
 
 	#overlay {

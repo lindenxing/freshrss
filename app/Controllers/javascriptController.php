@@ -5,6 +5,7 @@ class FreshRSS_javascript_Controller extends FreshRSS_ActionController {
 
 	/**
 	 * @var FreshRSS_ViewJavascript
+	 * @phpstan-ignore property.phpDocType
 	 */
 	protected $view;
 
@@ -35,9 +36,9 @@ class FreshRSS_javascript_Controller extends FreshRSS_ActionController {
 	public function nbUnreadsPerFeedAction(): void {
 		header('Content-Type: application/json; charset=UTF-8');
 		$catDAO = FreshRSS_Factory::createCategoryDao();
-		$this->view->categories = $catDAO->listCategories(true, false) ?: [];
+		$this->view->categories = $catDAO->listCategories(prePopulateFeeds: true, details: false);
 		$tagDAO = FreshRSS_Factory::createTagDao();
-		$this->view->tags = $tagDAO->listTags(true) ?: [];
+		$this->view->tags = $tagDAO->listTags(precounts: true);
 	}
 
 	//For Web-form login
@@ -53,6 +54,10 @@ class FreshRSS_javascript_Controller extends FreshRSS_ActionController {
 		header('Pragma: no-cache');
 
 		$user = $_GET['user'] ?? '';
+		if (!is_string($user) || $user === '') {
+			Minz_Error::error(400);
+			return;
+		}
 		FreshRSS_Context::initUser($user);
 		if (FreshRSS_Context::hasUserConf()) {
 			try {
@@ -78,5 +83,6 @@ class FreshRSS_javascript_Controller extends FreshRSS_ActionController {
 			$this->view->salt1 .= $alphabet[random_int(0, 63)];
 		}
 		$this->view->nonce = sha1('' . mt_rand());
+		Minz_Session::_param('nonce', $this->view->nonce);
 	}
 }

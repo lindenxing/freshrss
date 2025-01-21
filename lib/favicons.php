@@ -22,7 +22,7 @@ function isImgMime(string $content): bool {
 	return $isImage;
 }
 
-/** @param array<int,int|bool> $curlOptions */
+/** @param array<int,int|bool|string> $curlOptions */
 function downloadHttp(string &$url, array $curlOptions = []): string {
 	syslog(LOG_INFO, 'FreshRSS Favicon GET ' . $url);
 	$url2 = checkUrl($url);
@@ -61,7 +61,7 @@ function downloadHttp(string &$url, array $curlOptions = []): string {
 			$url = $url2;	//Possible redirect
 		}
 	}
-	return $info['http_code'] == 200 ? $response : '';
+	return is_array($info) && $info['http_code'] == 200 ? $response : '';
 }
 
 function searchFavicon(string &$url): string {
@@ -103,7 +103,10 @@ function searchFavicon(string &$url): string {
 		}
 
 		$iri = $href->get_iri();
-		$favicon = downloadHttp($iri, array(CURLOPT_REFERER => $url));
+		if ($iri == false) {
+			return '';
+		}
+		$favicon = downloadHttp($iri, [CURLOPT_REFERER => $url]);
 		if (isImgMime($favicon)) {
 			return $favicon;
 		}
@@ -115,16 +118,14 @@ function download_favicon(string $url, string $dest): bool {
 	$url = trim($url);
 	$favicon = searchFavicon($url);
 	if ($favicon == '') {
-		$rootUrl = preg_replace('%^(https?://[^/]+).*$%i', '$1/', $url);
+		$rootUrl = preg_replace('%^(https?://[^/]+).*$%i', '$1/', $url) ?? $url;
 		if ($rootUrl != $url) {
 			$url = $rootUrl;
 			$favicon = searchFavicon($url);
 		}
 		if ($favicon == '') {
 			$link = $rootUrl . 'favicon.ico';
-			$favicon = downloadHttp($link, array(
-					CURLOPT_REFERER => $url,
-				));
+			$favicon = downloadHttp($link, [CURLOPT_REFERER => $url]);
 			if (!isImgMime($favicon)) {
 				$favicon = '';
 			}

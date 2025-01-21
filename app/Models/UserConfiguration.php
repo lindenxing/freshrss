@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 /**
  * @property string $apiPasswordHash
- * @property array{'keep_period':string|false,'keep_max':int|false,'keep_min':int|false,'keep_favourites':bool,'keep_labels':bool,'keep_unreads':bool} $archiving
+ * @property array{keep_period:string|false,keep_max:int|false,keep_min:int|false,keep_favourites:bool,keep_labels:bool,keep_unreads:bool} $archiving
  * @property bool $auto_load_more
  * @property bool $auto_remove_article
  * @property bool $bottomline_date
@@ -42,7 +42,7 @@ declare(strict_types=1);
  * @property bool $onread_jump_next
  * @property string $passwordHash
  * @property int $posts_per_page
- * @property array<array{'get'?:string,'name'?:string,'order'?:string,'search'?:string,'state'?:int,'url'?:string,'token'?:string}> $queries
+ * @property array<int,array{get?:string,name?:string,order?:string,search?:string,state?:int,url?:string,token?:string}> $queries
  * @property bool $reading_confirm
  * @property int $since_hours_posts_per_rss
  * @property bool $show_fav_unread
@@ -51,7 +51,8 @@ declare(strict_types=1);
  * @property int $simplify_over_n_feeds
  * @property bool $show_nav_buttons
  * @property 'ASC'|'DESC' $sort_order
- * @property array<string,array<string>> $sharing
+ * @property 'id'|'date'|'link'|'title'|'rand' $sort
+ * @property array<int,array<string,string>> $sharing
  * @property array<string,string> $shortcuts
  * @property bool $sides_close_article
  * @property bool $sticky_post
@@ -94,8 +95,9 @@ final class FreshRSS_UserConfiguration extends Minz_Configuration {
 	 * @throws Minz_FileNotExistException
 	 */
 	public static function default(): FreshRSS_UserConfiguration {
+		/** @var FreshRSS_UserConfiguration|null $default_user_conf */
 		static $default_user_conf = null;
-		if ($default_user_conf == null) {
+		if ($default_user_conf === null) {
 			$namespace = 'user_default';
 			FreshRSS_UserConfiguration::register($namespace, '_', FRESHRSS_PATH . '/config-user.default.php');
 			$default_user_conf = FreshRSS_UserConfiguration::get($namespace);

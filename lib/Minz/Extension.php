@@ -26,7 +26,7 @@ abstract class Minz_Extension {
 
 	private bool $is_enabled;
 
-	/** @var string[] */
+	/** @var array<string,string> */
 	protected array $csp_policies = [];
 
 	/**
@@ -411,11 +411,11 @@ abstract class Minz_Extension {
 	}
 
 	/**
-	 * @param string[] $policies
+	 * @param array<string,string> $policies
 	 */
 	public function amendCsp(array &$policies): void {
 		foreach ($this->csp_policies as $policy => $source) {
-			if (array_key_exists($policy, $policies)) {
+			if (isset($policies[$policy])) {
 				$policies[$policy] .= ' ' . $source;
 			} else {
 				$policies[$policy] = $source;

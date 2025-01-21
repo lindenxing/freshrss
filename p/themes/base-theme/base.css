@@ -628,7 +628,7 @@ th {
 	color: #333;
 }
 
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: #fff;
 	border-color: #ddd;
 }

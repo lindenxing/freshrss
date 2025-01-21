@@ -4,10 +4,6 @@
 	$this->partial('aside_subscription');
 ?>
 <main class="post drop-section">
-	<div class="link-back-wrapper">
-		<a class="link-back" href="<?= _url('index', 'index') ?>"><?= _t('gen.action.back_to_rss_feeds') ?></a>
-	</div>
-
 	<h1><?= _t('sub.menu.add') ?></h1>
 	<h2><?= _t('sub.title.add_category') ?></h2>
 	<form action="<?= _url('category', 'create') ?>" method="post">
@@ -386,7 +382,7 @@
 	<form action="<?= _url('category', 'create') ?>" method="post">
 		<input type="hidden" name="_csrf" value="<?= FreshRSS_Auth::csrfToken() ?>" />
 		<div class="form-group">
-			<label class="group-name" for="new-category"><?= _t('sub.category') ?></label>
+			<label class="group-name" for="new-category"><?= _t('sub.title.add_opml_category') ?></label>
 			<div class="group-controls">
 				<input id="new-category" name="new-category" type="text" required="required" autocomplete="off" />
 			</div>

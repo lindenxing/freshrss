@@ -5,6 +5,7 @@ on:
     branches:
       - edge
   release:
+    types: [published]
   workflow_dispatch:
 
 permissions:

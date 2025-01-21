@@ -14,10 +14,11 @@ return array(
 	'action' => array(
 		'actualize' => 'Actualiser flux',
 		'add' => 'Ajouter',
-		'back' => '← Retour',
 		'back_to_rss_feeds' => '← Retour à vos flux RSS',
 		'cancel' => 'Annuler',
 		'create' => 'Créer',
+		'delete_all_feeds' => 'Supprimer tous les flux',
+		'delete_errored_feeds' => 'Supprimer les flux en erreur',
 		'delete_muted_feeds' => 'Supprimer les flux désactivés',
 		'demote' => 'Rétrograder',
 		'disable' => 'Désactiver',
@@ -210,6 +211,7 @@ return array(
 		'archiveIS' => 'archive.is',	// IGNORE
 		'archiveORG' => 'archive.org',	// IGNORE
 		'archivePH' => 'archive.ph',	// IGNORE
+		'bluesky' => 'Bluesky',	// TODO
 		'buffer' => 'Buffer',	// IGNORE
 		'clipboard' => 'Presse-papier',
 		'diaspora' => 'Diaspora*',	// IGNORE

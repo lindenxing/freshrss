@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Lisää ennen aiempaa sisältöä',
 			'replace' => 'Korvaa aiempi sisältö',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Käytä evästeitä noudettaessa artikkelin sisältö',
 		'css_cookie_help' => 'Esimerkki: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Noutaa lyhennetyt RSS-syötteet (huomautus: kestää pidempään!)',
 		'css_path' => 'Artikkelin CSS-valitsin alkuperäisellä sivustolla',
 		'css_path_filter' => array(
 			'_' => 'Poistettavien elementtien CSS-valitsin',
-			'help' => 'CSS-valitsin voi olla luettelo, kuten: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'CSS-valitsin voi olla luettelo, kuten: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Kuvaus',
 		'empty' => 'Syöte on tyhjä. Varmista, että sitä ylläpidetään edelleen.',
-		'error' => 'Syötteessä on ilmennyt ongelma. Varmista, että se on aina tavoitettavissa ja päivitä se sitten.',
+		'error' => 'Syötteessä on ilmennyt ongelma. Varmista, että se on aina tavoitettavissa.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Lataa',
 			'help' => 'XML-tiedosto (osa tiedoista. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">Katso ohje</a>)',
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'Syötettä ei ole valittu.',
 		'number_entries' => '%d artikkelia',
 		'open_feed' => 'Avaa syöte %s',
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Näkyvyys',
 			'archived' => 'Älä näytä (arkistoitu)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Lisää dynaaminen OPML',
 		'add_feed' => 'Lisää syöte',
 		'add_label' => 'Lisää tunniste',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => 'Poista tunniste',
 		'feed_management' => 'RSS-syötteiden hallinta',
 		'rename_label' => 'Nimeä tunniste uudelleen',

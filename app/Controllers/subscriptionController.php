@@ -18,7 +18,7 @@ class FreshRSS_subscription_Controller extends FreshRSS_ActionController {
 
 		$catDAO = FreshRSS_Factory::createCategoryDao();
 		$catDAO->checkDefault();
-		$this->view->categories = $catDAO->listSortedCategories(false, true) ?: [];
+		$this->view->categories = $catDAO->listSortedCategories(prePopulateFeeds: false, details: true);
 
 		$signalError = false;
 		foreach ($this->view->categories as $cat) {
@@ -93,16 +93,18 @@ class FreshRSS_subscription_Controller extends FreshRSS_ActionController {
 			FreshRSS_View::appendScript(Minz_Url::display('/scripts/feed.js?' . @filemtime(PUBLIC_PATH . '/scripts/feed.js')));
 		}
 
-		$feedDAO = FreshRSS_Factory::createFeedDao();
-		$this->view->feeds = $feedDAO->listFeeds();
-
 		$id = Minz_Request::paramInt('id');
-		if ($id === 0 || !isset($this->view->feeds[$id])) {
-			Minz_Error::error(404);
+		if ($id === 0) {
+			Minz_Error::error(400);
 			return;
 		}
 
-		$feed = $this->view->feeds[$id];
+		$feedDAO = FreshRSS_Factory::createFeedDao();
+		$feed = $feedDAO->searchById($id);
+		if ($feed === null) {
+			Minz_Error::error(404);
+			return;
+		}
 		$this->view->feed = $feed;
 
 		FreshRSS_View::prependTitle($feed->name() . ' · ' . _t('sub.title.feed_management') . ' · ');
@@ -299,6 +301,9 @@ class FreshRSS_subscription_Controller extends FreshRSS_ActionController {
 				}
 			}
 
+			$conditions = Minz_Request::paramTextToArray('path_entries_conditions', plaintext: true);
+			$conditions = array_filter(array_map('trim', $conditions));
+			$feed->_attribute('path_entries_conditions', empty($conditions) ? null : $conditions);
 			$feed->_attribute('path_entries_filter', Minz_Request::paramString('path_entries_filter', true));
 
 			$values = [

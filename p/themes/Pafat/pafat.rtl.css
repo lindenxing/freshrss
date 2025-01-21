@@ -967,7 +967,7 @@ a.signin {
 	border: none;
 }
 
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: var(--background-color-white);
 	border-color: var(--border-color-grey-light);
 }

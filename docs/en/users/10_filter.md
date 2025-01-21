@@ -116,7 +116,7 @@ Finally, parentheses may be used to express more complex queries, with basic neg
 * `(author:Alice intitle:hello) !(author:Bob intitle:world)`
 * `!(S:1 OR S:2)`
 
-> ℹ️ If you need to search for a parenthesis, it needs to be escaped like `\(` or `\)`
+> ℹ️ If you need to search for a parenthesis, it needs to be escaped like `\(` or `\)` or used inside a quoted string like `"a (b)"`
 
 ### Regex
 

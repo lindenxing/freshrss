@@ -23,9 +23,9 @@
 <?php
 foreach ($this->entries as $item) {
 	if (!$this->internal_rendering) {
-		/** @var FreshRSS_Entry */
+		/** @var FreshRSS_Entry|null $item */
 		$item = Minz_ExtensionManager::callHook('entry_before_display', $item);
-		if ($item == null) {
+		if ($item === null) {
 			continue;
 		}
 	}

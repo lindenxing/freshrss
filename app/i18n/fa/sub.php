@@ -57,6 +57,7 @@ return array(
 			'prepend' => ' قبل از محتوای موجود اضافه کنید',
 			'replace' => ' محتوای موجود را جایگزین کنید',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => ' هنگام واکشی محتوای مقاله از کوکی ها استفاده کنید',
 		'css_cookie_help' => ' مثال: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => ' فیدهای RSS کوتاه شده را بازیابی می کند (احتیاط',
@@ -67,7 +68,7 @@ return array(
 		),
 		'description' => ' توضیحات',
 		'empty' => ' این فید خالی است. لطفاً بررسی کنید که هنوز نگهداری می شود.',
-		'error' => ' این فید با مشکل مواجه شده است. لطفاً بررسی کنید که همیشه در دسترس است و سپس آن را به روز کنید.',
+		'error' => ' این فید با مشکل مواجه شده است. لطفاً بررسی کنید که همیشه در دسترس است و سپس آن را به روز کنید.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Download',	// TODO
 			'help' => 'XML file (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',	// TODO
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => ' هیچ خوراکی انتخاب نشده است.',
 		'number_entries' => ' %d مقاله',
 		'open_feed' => 'Open feed %s',	// TODO
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => ' دید',
 			'archived' => ' نشان داده نشود (بایگانی شده)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => ' OPML پویا را اضافه کنید',
 		'add_feed' => ' یک فید اضافه کنید',
 		'add_label' => ' یک برچسب اضافه کنید',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => ' یک برچسب را حذف کنید',
 		'feed_management' => ' فیدهای RSS را مدیریت می کندment',
 		'rename_label' => ' نام یک برچسب را تغییر دهید',

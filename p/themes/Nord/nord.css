@@ -53,6 +53,7 @@
 	--frss-background-color-middle: var(--highlight);
 	--frss-background-color-dark: var(--light-bg);
 	--frss-background-color-error-transparent: #bf616a40;
+	--frss-border-color: var(--border-elements);
 
 	--frss-scrollbar-handle: #0002;
 	--frss-scrollbar-handle-hover: var(--nord1-polarnight);
@@ -1191,7 +1192,7 @@ optgroup::before {
 	border: none;
 }
 
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: var(--accent-bg);
 	border: none;
 	border-radius: 12px;

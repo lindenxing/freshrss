@@ -105,7 +105,13 @@ return array(
 	),
 	'profile' => array(
 		'_' => 'Profil yönetimi',
-		'api' => 'API yönetimi',
+		'api' => array(
+			'_' => 'API yönetimi',
+			'check_link' => 'Check API status via: <kbd><a href="../api/" target="_blank">%s</a></kbd>',	// TODO
+			'disabled' => 'The API access is disabled.',	// TODO
+			'documentation_link' => 'See the <a href="https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target="_blank">documentation and list of known apps</a>',	// TODO
+			'help' => 'See <a href="http://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target=_blank>documentation</a>',	// TODO
+		),
 		'delete' => array(
 			'_' => 'Hesap silme',
 			'warn' => 'Hesabınız ve tüm verileriniz silinecek.',
@@ -132,6 +138,8 @@ return array(
 			'tags' => 'Etikete göre göster',
 			'type' => 'Tür',
 		),
+		'get_A' => 'Show all feeds, also those shown in their category',	// TODO
+		'get_Z' => 'Show all feeds, also archived ones',	// TODO
 		'get_all' => 'Tüm makaleleri göster',
 		'get_all_labels' => 'Herhangi etikete sahip makaleleri göster ',
 		'get_category' => '“%s” kategorisini göster',
@@ -143,12 +151,20 @@ return array(
 		'image_url' => 'Resim Bağlantısı (URL)',
 		'name' => 'İsim',
 		'no_filter' => 'Filtre yok',
+		'no_queries' => array(
+			'_' => 'No user queries are saved yet.',	// TODO
+			'help' => 'See <a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">documentation</a>',	// TODO
+		),
 		'number' => 'Sorgu n°%d',
 		'order_asc' => 'Önce eski makaleleri göster',
 		'order_desc' => 'Önce yeni makaleleri göster',
 		'search' => '“%s” için arama',
 		'share' => array(
 			'_' => 'Bu aramayı linkle paylaşın',
+			'disabled' => array(
+				'_' => 'disabled',	// TODO
+				'title' => 'Sharing',	// TODO
+			),
 			'greader' => 'GReader JSON için paylaşılabilir bağlantı',
 			'help' => 'Bu aramayı herhangi biriyle paylaşmak istiyorsanız bu bağlantıyı verin',
 			'html' => 'HTML sayfasına paylaşılabilir bağlantı',
@@ -243,12 +259,13 @@ return array(
 		'show' => array(
 			'_' => 'Gösterilecek makaleler',
 			'active_category' => 'Mevcut kategori',
-			'adaptive' => 'Ayarlanmış gösterim',
+			'adaptive' => 'Show unreads if any, all articles otherwise',	// TODO
 			'all_articles' => 'Tüm makaleleri göster',
 			'all_categories' => 'Tüm kategoriler',
 			'no_category' => 'Hiçbir kategori',
 			'remember_categories' => 'Açık kategorileri hatırla',
 			'unread' => 'Sadece okunmamış makaleleri göster',
+			'unread_or_favorite' => 'Show unreads and favourites',	// TODO
 		),
 		'show_fav_unread_help' => 'Etiketlerde de uygula',
 		'sides_close_article' => 'Makale dışında bir alana tıklamak makaleyi kapatır',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => 'Paylaşım',
 		'add' => 'Bir paylaşım türü ekle',
+		'bluesky' => 'Bluesky',	// TODO
 		'deprecated' => 'Bu servis kullanımdan kaldırılmıştır ve gelecekteki bir FreshRSS dağıtımında kaldırılacaktır. Daha fazla bilgi için <a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="Daha fazla bilgi için belgeyi açın" target="_blank">buraya</a> tıklayın.',
 		'diaspora' => 'Diaspora*',	// IGNORE
 		'email' => 'Email',	// IGNORE

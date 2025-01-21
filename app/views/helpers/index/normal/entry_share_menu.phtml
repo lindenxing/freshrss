@@ -4,6 +4,7 @@
 ?>
 <ul class="dropdown-menu">
 	<li class="dropdown-header"><?= _t('index.share') ?> <a href="<?= _url('configure', 'integration') ?>"><?= _i('configure') ?></a></li><?php
+		$id = '--entryId--';
 		$link = '--link--';
 		$title = '--titleText----websiteName----articleAuthors--';
 		foreach (FreshRSS_Context::userConf()->sharing as $share_options) {
@@ -12,6 +13,7 @@
 				continue;
 			}
 			$cssClass = $share->isDeprecated() ? ' error' : '';
+			$share_options['id'] = $id;
 			$share_options['link'] = $link;
 			$share_options['title'] = $title;
 			$share->update($share_options);

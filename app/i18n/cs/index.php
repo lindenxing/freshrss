@@ -14,6 +14,16 @@ return array(
 	'about' => array(
 		'_' => 'O aplikaci',
 		'agpl3' => '<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL 3</a>',	// IGNORE
+		'bug_reports' => array(
+			'environment_information' => array(
+				'_' => 'System information',	// TODO
+				'browser' => 'Browser',	// TODO
+				'database' => 'Database',	// TODO
+				'server_software' => 'Server software',	// TODO
+				'version_frss' => 'FreshRSS version',	// TODO
+				'version_php' => 'PHP version',	// TODO
+			),
+		),
 		'bugs_reports' => 'Hlášení chyb',
 		'credits' => 'Poděkování',
 		'credits_content' => 'Některé designové prvky pocházejí z <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>, FreshRSS ale tuto platformu nevyužívá. <a href="https://gitlab.gnome.org/Archive/gnome-icon-theme-symbolic">Ikony</a> pocházejí z <a href="https://www.gnome.org/">projektu GNOME</a>. Písmo <em>Open Sans</em> vytvořil <a href="https://fonts.google.com/specimen/Open+Sans">Steve Matteson</a>. FreshRSS je založeno na PHP framework <a href="https://framagit.org/marienfressinaud/MINZ">Minz</a>.',
@@ -27,6 +37,11 @@ return array(
 	),
 	'feed' => array(
 		'empty' => 'Nejsou žádné články k zobrazení.',
+		'received' => array(
+			'before_yesterday' => 'Received before yesterday',	// TODO
+			'today' => 'Received today',	// TODO
+			'yesterday' => 'Received yesterday',	// TODO
+		),
 		'rss_of' => 'Kanál RSS %s',
 		'title' => 'Hlavní kanál',
 		'title_fav' => 'Oblíbené',
@@ -60,6 +75,18 @@ return array(
 		'reader_view' => 'Zobrazení pro čtení',
 		'rss_view' => 'Kanál RSS',
 		'search_short' => 'Hledat',
+		'sort' => array(
+			'_' => 'Sorting criteria',	// TODO
+			'date_asc' => 'Publication date 1→9',	// TODO
+			'date_desc' => 'Publication date 9→1',	// TODO
+			'id_asc' => 'Freshly received last',	// TODO
+			'id_desc' => 'Freshly received first',	// TODO
+			'link_asc' => 'Link A→Z',	// TODO
+			'link_desc' => 'Link Z→A',	// TODO
+			'rand' => 'Random order',	// TODO
+			'title_asc' => 'Title A→Z',	// TODO
+			'title_desc' => 'Title Z→A',	// TODO
+		),
 		'starred' => 'Zobrazit oblíbené',
 		'stats' => 'Statistika',
 		'subscription' => 'Správa odběrů',

@@ -57,17 +57,18 @@ return array(
 			'prepend' => '이미 존재하는 콘텐츠 이전에 추가',
 			'replace' => '이미 존재하는 콘텐츠 대체',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => '글 콘텐츠를 가져올 때 쿠키를 사용',
 		'css_cookie_help' => '예시: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => '글의 일부가 포함된 RSS 피드를 가져옵니다 (주의, 시간이 좀 더 걸립니다!)',
 		'css_path' => '웹사이트 상의 글 본문에 해당하는 CSS 경로',
 		'css_path_filter' => array(
 			'_' => '제거할 요소의 CSS 선택자',
-			'help' => 'CSS 선택자는 다음과 같은 목록일 수 있습니다: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'CSS 선택자는 다음과 같은 목록일 수 있습니다: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => '설명',
 		'empty' => '이 피드는 비어있습니다. 피드가 계속 운영되고 있는지 확인하세요.',
-		'error' => '이 피드에 문제가 발생했습니다. 이 피드에 접근 권한이 있는지 확인하세요.',
+		'error' => '이 피드에 문제가 발생했습니다. 이 피드에 접근 권한이 있는지 확인하세요.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => '다운로드',
 			'help' => 'XML 파일 (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',	// DIRTY
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => '선택된 피드가 없습니다.',
 		'number_entries' => '%d 개의 글',
 		'open_feed' => 'Open feed %s',	// TODO
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => '표시',
 			'archived' => '표시하지 않음 (보관됨)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => '동적 OPML 추가',
 		'add_feed' => '피드 추가',
 		'add_label' => '라벨 추가',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => '라벨 삭제',
 		'feed_management' => 'RSS 피드 관리',
 		'rename_label' => '라벨 이름 바꾸기',

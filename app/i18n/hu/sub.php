@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Hozzáadás a létező tartalom elé',
 			'replace' => 'Cserélje ki a létező tartalmat',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Használjon sütiket a cikkek letöltésénél',
 		'css_cookie_help' => 'Példa: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Csonkított RSS hírforrások beszerzése (vigyázz, több időt igényel!)',
 		'css_path' => 'Cikk CSS selector az eredeti weblapon',
 		'css_path_filter' => array(
 			'_' => 'A törlendő elemek CSS selectora',
-			'help' => 'Egy CSS selector lehet egy lista például: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'Egy CSS selector lehet egy lista például: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Leírás',
 		'empty' => 'Ez a hírforrás üres. Ellenőrizd hogy van e tartalom rajta.',
-		'error' => 'Ez a hírforrás nem működik. Ellenőrizd az elérhetőségét és frissítsd.',
+		'error' => 'Ez a hírforrás nem működik. Ellenőrizd az elérhetőségét.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Letöltés',
 			'help' => 'XML fájl (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',	// DIRTY
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'Nincsen hírforrás kiválasztva.',
 		'number_entries' => '%d cikkek',
 		'open_feed' => 'Open feed %s',	// TODO
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Láthatóság',
 			'archived' => 'Ne jelenjen meg (archivált)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Dinamikus OPML hozzáadása',
 		'add_feed' => 'Hírforrás hozzáadása',
 		'add_label' => 'Címke hozzáadása',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => 'Címke törlése',
 		'feed_management' => 'RSS hírforrások kezelése',
 		'rename_label' => 'Címke átnevezése',

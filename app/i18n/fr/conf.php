@@ -105,7 +105,13 @@ return array(
 	),
 	'profile' => array(
 		'_' => 'Gestion du profil',
-		'api' => 'Gestion de l’API',
+		'api' => array(
+			'_' => 'Gestion de l’API',
+			'check_link' => 'Vérifier l’état de l’API via : <kbd><a href="../api/" target="_blank">%s</a></kbd>',
+			'disabled' => 'L’accès API est désactivé.',
+			'documentation_link' => 'Voir <a href="https://freshrss.github.io/FreshRSS/fr/users/06_Mobile_access.html" target="_blank">la documentation et une liste d’applications compatibles</a>',
+			'help' => 'Voir <a href="https://freshrss.github.io/FreshRSS/fr/users/06_Mobile_access.html" target=_blank>la documentation</a>',
+		),
 		'delete' => array(
 			'_' => 'Suppression du compte',
 			'warn' => 'Le compte et toutes les données associées vont être supprimées.',
@@ -132,6 +138,8 @@ return array(
 			'tags' => 'Afficher par étiquette',
 			'type' => 'Type',	// IGNORE
 		),
+		'get_A' => 'Tous les flux, y compris ceux limités à leur catégorie',
+		'get_Z' => 'Tous les flux, y compris les archivés',
 		'get_all' => 'Afficher tous les articles',
 		'get_all_labels' => 'Afficher les articles avec une étiquette',
 		'get_category' => 'Afficher la catégorie <em>%s<em>',
@@ -143,12 +151,20 @@ return array(
 		'image_url' => 'URL de l’image',
 		'name' => 'Nom',
 		'no_filter' => 'Aucun filtre appliqué',
+		'no_queries' => array(
+			'_' => 'Aucun filtre utilisateur n’a été sauvegardé.',
+			'help' => 'Voir <a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">la documentation</a>',
+		),
 		'number' => 'Filtre n°%d',
 		'order_asc' => 'Afficher les articles les plus anciens en premier',
 		'order_desc' => 'Afficher les articles les plus récents en premier',
 		'search' => 'Recherche de « %s »',
 		'share' => array(
 			'_' => 'Partager ce filtre par lien',
+			'disabled' => array(
+				'_' => 'désactivé',
+				'title' => 'Partager',
+			),
 			'greader' => 'Lien partageable au format JSON GReader',
 			'help' => 'Donner ce lien pour partager le contenu du filtre avec d’autres personnes',
 			'html' => 'Lien partageable de la page HTML',
@@ -243,12 +259,13 @@ return array(
 		'show' => array(
 			'_' => 'Articles à afficher',
 			'active_category' => 'La catégorie active',
-			'adaptive' => 'Adapter l’affichage',
+			'adaptive' => 'Afficher les non lus s’il y en a, sinon tous les articles',
 			'all_articles' => 'Afficher tous les articles',
 			'all_categories' => 'Toutes les catégories',
 			'no_category' => 'Aucune catégorie',
 			'remember_categories' => 'Se souvenir des catégories dépliées',
 			'unread' => 'Afficher les non lus',
+			'unread_or_favorite' => 'Afficher les non lus et les favoris',
 		),
 		'show_fav_unread_help' => 'S’applique aussi aux étiquettes',
 		'sides_close_article' => 'Cliquer hors de la zone de texte ferme l’article',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => 'Partage',
 		'add' => 'Ajouter une méthode de partage',
+		'bluesky' => 'Bluesky',	// TODO
 		'deprecated' => 'Ce service est obsolète et sera supprimé dans une <a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="Voir la documentation" target="_blank">prochaine version de FreshRSS</a>.',
 		'diaspora' => 'Diaspora*',	// IGNORE
 		'email' => 'Courriel',
@@ -304,7 +322,7 @@ return array(
 		'mark_favorite' => 'Basculer l’indicateur de favori',
 		'mark_read' => 'Basculer l’indicateur de lecture',
 		'navigation' => 'Navigation',	// IGNORE
-		'navigation_help' => 'Avec le modificateur <kbd>⇧ Maj</kbd>, les raccourcis de navigation s’appliquent aux flux.<br/>Avec le modificateur <kbd>Alt ⎇</kbd>, les raccourcis de navigation s’appliquent aux catégories.',
+		'navigation_help' => 'Avec le modificateur <kbd>⇧ Maj</kbd>, les raccourcis de navigation s’appliquent aux flux.<br />Avec le modificateur <kbd>Alt ⎇</kbd>, les raccourcis de navigation s’appliquent aux catégories.',
 		'navigation_no_mod_help' => 'Les raccourcis suivant ne supportent pas les modificateurs.',
 		'next_article' => 'Passer à l’article suivant',
 		'next_unread_article' => 'Passer à l’article non lu suivant',

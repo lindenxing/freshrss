@@ -14,7 +14,7 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'Allow anonymous reading of the default user’s articles (%s)',	// IGNORE
 		'allow_anonymous_refresh' => 'Allow anonymous refresh of the articles',	// IGNORE
-		'api_enabled' => 'Allow <abbr>API</abbr> access <small>(required for mobile apps)</small>',	// IGNORE
+		'api_enabled' => 'Allow <abbr>API</abbr> access <small>(required for mobile apps and sharing user queries)</small>',	// IGNORE
 		'form' => 'Web form (traditional, requires JavaScript)',	// IGNORE
 		'http' => 'HTTP (for advanced users with HTTPS)',	// IGNORE
 		'none' => 'None (dangerous)',	// IGNORE
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => 'Main stream',	// IGNORE
 		'no_idle' => 'There are no idle feeds!',	// IGNORE
 		'number_entries' => '%d articles',	// IGNORE
+		'overview' => 'Overview',	// IGNORE
 		'percent_of_total' => '% of total',	// IGNORE
-		'repartition' => 'Articles repartition',	// IGNORE
+		'repartition' => 'Articles repartition: %s',	// IGNORE
 		'status_favorites' => 'Favorites',
 		'status_read' => 'Read',	// IGNORE
 		'status_total' => 'Total',	// IGNORE

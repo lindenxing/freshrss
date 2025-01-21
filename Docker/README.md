@@ -274,6 +274,7 @@ sudo nano /var/lib/docker/volumes/freshrss_data/_data/config.php
 First, put variables such as passwords in your `.env` file, which can live where your `docker-compose.yml` should be. See [`example.env`](./freshrss/example.env).
 
 ```ini
+BASE_URL=https://freshrss.example.net
 ADMIN_EMAIL=admin@example.net
 ADMIN_PASSWORD=freshrss
 ADMIN_API_PASSWORD=freshrss
