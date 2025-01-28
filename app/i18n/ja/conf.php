@@ -100,12 +100,18 @@ return array(
 		),
 	),
 	'privacy' => array(
-		'_' => 'Privacy',	// TODO
-		'retrieve_extension_list' => 'Retrieve extension list',	// TODO
+		'_' => 'プライバシー',
+		'retrieve_extension_list' => '拡張機能リストを取得する',
 	),
 	'profile' => array(
 		'_' => 'プロフィール',
-		'api' => 'API管理',
+		'api' => array(
+			'_' => 'API管理',
+			'check_link' => 'APIステータスを確認する: <kbd><a href="../api/" target="_blank">%s</a></kbd>',
+			'disabled' => 'APIアクセスは無効です。',
+			'documentation_link' => '既知のアプリの一覧は<a href="https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target="_blank">ドキュメント</a>を参照してください',
+			'help' => '<a href="http://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target=_blank>ドキュメント</a>を参照します',
+		),
 		'delete' => array(
 			'_' => 'アカウント消去',
 			'warn' => 'あなたのアカウントとそれに関連したデータが消去されます。',
@@ -132,6 +138,8 @@ return array(
 			'tags' => 'タグごとに表示する',
 			'type' => 'タイプ',
 		),
+		'get_A' => 'カテゴリで表示するものも含め、すべてのフィードを表示する',
+		'get_Z' => 'アーカイブも含め、すべてのフィードを表示する',
 		'get_all' => 'すべての記事を表示する',
 		'get_all_labels' => '任意のラベルで記事を表示する',
 		'get_category' => 'カテゴリ“%s”を表示する',
@@ -143,13 +151,21 @@ return array(
 		'image_url' => '画像のURL',
 		'name' => '名前',
 		'no_filter' => 'フィルターはありません',
+		'no_queries' => array(
+			'_' => 'まだユーザークエリは保存されていません。',
+			'help' => '<a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">ドキュメント</a>を参照してください',
+		),
 		'number' => 'クエリ n°%d',
 		'order_asc' => '古い記事を最初に表示する',
 		'order_desc' => '新しい記事を最初に表示する',
 		'search' => '“%s”で検索する',
 		'share' => array(
 			'_' => 'このクエリをリンクで共有する',
-			'greader' => 'Shareable link to the GReader JSON',	// TODO
+			'disabled' => array(
+				'_' => '無効',
+				'title' => '共有',
+			),
+			'greader' => 'GReader用JSONファイルへの共有リンク',
 			'help' => 'このクエリを誰かと共有したい場合は、このリンクを提供してください',
 			'html' => 'HTMLページへの共有リンク',
 			'opml' => 'フィードのOPMLリストへの共有リンク',
@@ -177,7 +193,7 @@ return array(
 		'_' => 'リーディング',
 		'after_onread' => '“すべてに既読を付ける”を押した後,',
 		'always_show_favorites' => 'デフォルトですべてのお気に入りの記事を表示する',
-		'apply_to_individual_feed' => 'Applies to feeds individually',	// TODO
+		'apply_to_individual_feed' => '個々のフィードに適用する',
 		'article' => array(
 			'authors_date' => array(
 				'_' => '著者と日付',
@@ -237,18 +253,19 @@ return array(
 			'upon_gone' => 'ニュースフィードの提供元がなくなったとき',
 			'upon_reception' => '記事を受け取ったとき',
 			'when' => '記事を既読にする…',
-			'when_same_title_in_category' => 'if an identical title already exists in the top <i>n</i> newest articles of the category',	// TODO
-			'when_same_title_in_feed' => 'すでに同一タイトルが上位n件の最新記事に存在するとき (of the feed)',	// DIRTY
+			'when_same_title_in_category' => 'すでに同一タイトルがカテゴリ内上位<i>n</i>件の最新記事に存在するとき',
+			'when_same_title_in_feed' => 'すでに同一タイトルがフィード内上位<i>n</i>件の最新記事に存在するとき',
 		),
 		'show' => array(
 			'_' => '記事を表示する',
 			'active_category' => 'アクティブなカテゴリ',
-			'adaptive' => '表示を調整する',
+			'adaptive' => '未読を表示し、無ければすべての記事を表示する',
 			'all_articles' => 'すべての記事を表示する',
 			'all_categories' => 'すべてのカテゴリ',
 			'no_category' => '未分類',
 			'remember_categories' => '前回開いたカテゴリ',
 			'unread' => '未読のみ表示する',
+			'unread_or_favorite' => '未読とお気に入りを表示する',
 		),
 		'show_fav_unread_help' => 'ラベルも適用する',
 		'sides_close_article' => '記事の外をクリックすると記事を閉じるようにする',
@@ -258,7 +275,7 @@ return array(
 			'older_first' => '最古のものを先頭にする',
 		),
 		'star' => array(
-			'when' => 'Mark an article as favourite…',	// TODO
+			'when' => '記事をお気に入りに登録する。',
 		),
 		'sticky_post' => '開いたときにトップを記事にする',
 		'title' => 'リーディング',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => '共有',
 		'add' => '共有方法を追加する',
+		'bluesky' => 'Bluesky',	// IGNORE
 		'deprecated' => 'このサービスは非推奨でFreshRSSの<a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="Open documentation for more information" target="_blank">将来のリリース</a>から削除される予定です。',
 		'diaspora' => 'Diaspora*',	// IGNORE
 		'email' => 'Eメール',

@@ -18,15 +18,15 @@ $lazyload = FreshRSS_Context::userConf()->lazyload;
 	$lastEntry = null;
 	$nbEntries = 0;
 	foreach ($this->entries as $entry):
-		$lastEntry = $entry;
-		$nbEntries++;
-		ob_flush();
-		/** @var FreshRSS_Entry */
+		/** @var FreshRSS_Entry|null $entry */
 		$entry = Minz_ExtensionManager::callHook('entry_before_display', $entry);
-		if ($entry == null) {
+		if ($entry === null) {
 			continue;
 		}
+		ob_flush();
 		$this->entry = $entry;
+		$lastEntry = $entry;
+		$nbEntries++;
 
 		//We most likely already have the feed object in cache, otherwise make a request
 		$this->feed = FreshRSS_Category::findFeed($this->categories, $entry->feedId()) ?? $entry->feed() ?? FreshRSS_Feed::default();

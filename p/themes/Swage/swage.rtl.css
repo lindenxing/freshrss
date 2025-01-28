@@ -1140,7 +1140,7 @@ button.as-link {
 #stream.reader .flux::after {
 	border: none;
 }
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	border-color: var(--color-border-grey);
 }
 #stream.reader .flux .author {

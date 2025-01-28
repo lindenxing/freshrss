@@ -50,6 +50,12 @@ return [
 		'form' => 'simple',
 		'method' => 'GET',
 	],
+	'bluesky' => [
+		'url' => 'https://bsky.app/intent/compose?text=~LINK~',
+		'transform' => ['urlencode'],
+		'form' => 'simple',
+		'method' => 'GET',
+	],
 	'buffer' => [
 		'url' => 'https://publish.buffer.com/compose?url=~LINK~&text=~TITLE~',
 		'transform' => ['rawurlencode'],

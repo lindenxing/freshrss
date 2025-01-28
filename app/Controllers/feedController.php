@@ -175,15 +175,17 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 			$max_redirs = Minz_Request::paramInt('curl_params_redirects');
 			$useragent = Minz_Request::paramString('curl_params_useragent', plaintext: true);
 			$proxy_address = Minz_Request::paramString('curl_params', plaintext: true);
-			$proxy_type = Minz_Request::paramString('proxy_type', plaintext: true);
+			$proxy_type = Minz_Request::paramIntNull('proxy_type');
 			$request_method = Minz_Request::paramString('curl_method', plaintext: true);
 			$request_fields = Minz_Request::paramString('curl_fields', plaintext: true);
 			$headers = Minz_Request::paramTextToArray('http_headers', plaintext: true);
 
 			$opts = [];
-			if ($proxy_type !== '') {
+			if ($proxy_type !== null) {
+				$opts[CURLOPT_PROXYTYPE] = $proxy_type;
+			}
+			if ($proxy_address !== '') {
 				$opts[CURLOPT_PROXY] = $proxy_address;
-				$opts[CURLOPT_PROXYTYPE] = (int)$proxy_type;
 			}
 			if ($cookie !== '') {
 				$opts[CURLOPT_COOKIE] = $cookie;
@@ -337,13 +339,13 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 			FreshRSS_View::prependTitle(_t('sub.feed.title_add') . ' · ');
 
 			$catDAO = FreshRSS_Factory::createCategoryDao();
-			$this->view->categories = $catDAO->listCategories(false) ?: [];
+			$this->view->categories = $catDAO->listCategories(prePopulateFeeds: false);
 			$this->view->feed = new FreshRSS_Feed($url);
 			try {
 				// We try to get more information about the feed.
 				$this->view->feed->load(true);
 				$this->view->load_ok = true;
-			} catch (Exception $e) {
+			} catch (Exception) {
 				$this->view->load_ok = false;
 			}
 
@@ -423,12 +425,8 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 			}
 		} else {
 			$feeds = $feedDAO->listFeedsOrderUpdate(-1);
-
 			// Hydrate category for each feed to avoid that each feed has to make an SQL request
-			$categories = [];
-			foreach ($catDAO->listCategories(false, false) as $category) {
-				$categories[$category->id()] = $category;
-			}
+			$categories = $catDAO->listCategories(prePopulateFeeds: false, details: false);
 			foreach ($feeds as $feed) {
 				$category = $categories[$feed->categoryId()] ?? null;
 				if ($category !== null) {
@@ -576,7 +574,7 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 				$mark_updated_article_unread = $feed->attributeBoolean('mark_updated_article_unread') ?? FreshRSS_Context::userConf()->mark_updated_article_unread;
 
 				// For this feed, check existing GUIDs already in database.
-				$existingHashForGuids = $entryDAO->listHashForFeedGuids($feed->id(), $newGuids) ?: [];
+				$existingHashForGuids = $entryDAO->listHashForFeedGuids($feed->id(), $newGuids);
 				/** @var array<string,bool> $newGuids */
 				$newGuids = [];
 
@@ -793,15 +791,12 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 	private static function applyLabelActions(int $nbNewEntries): int|false {
 		$tagDAO = FreshRSS_Factory::createTagDao();
 		$labels = FreshRSS_Context::labels();
-		$labels = array_filter($labels, static function (FreshRSS_Tag $label) {
-			return !empty($label->filtersAction('label'));
-		});
+		$labels = array_filter($labels, static fn(FreshRSS_Tag $label) => !empty($label->filtersAction('label')));
 		if (count($labels) <= 0) {
 			return 0;
 		}
 
 		$entryDAO = FreshRSS_Factory::createEntryDao();
-		/** @var array<array{id_tag:int,id_entry:string}> $applyLabels */
 		$applyLabels = [];
 		foreach (FreshRSS_Entry::fromTraversable($entryDAO->selectAll($nbNewEntries)) as $entry) {
 			foreach ($labels as $label) {
@@ -1005,7 +1000,6 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 			// TODO: Delete old favicon
 
 			// Remove related queries
-			/** @var array<array{'get'?:string,'name'?:string,'order'?:string,'search'?:string,'state'?:int,'url'?:string}> $queries */
 			$queries = remove_query_by_get('f_' . $feed_id, FreshRSS_Context::userConf()->queries);
 			FreshRSS_Context::userConf()->queries = $queries;
 			FreshRSS_Context::userConf()->save();
@@ -1108,7 +1102,7 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 
 		//Extract all feed entries from database, load complete content and store them back in database.
 		$entryDAO = FreshRSS_Factory::createEntryDao();
-		$entries = $entryDAO->listWhere('f', $feed_id, FreshRSS_Entry::STATE_ALL, 'DESC', $limit);
+		$entries = $entryDAO->listWhere('f', $feed_id, FreshRSS_Entry::STATE_ALL, order: 'DESC', limit: $limit);
 
 		//We need another DB connection in parallel for unbuffered streaming
 		Minz_ModelPdo::$usesSharedPdo = false;
@@ -1203,7 +1197,7 @@ class FreshRSS_feed_Controller extends FreshRSS_ActionController {
 				$this->view->selectorSuccess = false;
 				$this->view->htmlContent = $entry->content(false);
 			}
-		} catch (Exception $e) {
+		} catch (Exception) {
 			$this->view->fatalError = _t('feedback.sub.feed.selector_preview.http_error');
 		}
 	}

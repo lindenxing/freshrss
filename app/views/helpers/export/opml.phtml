@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 /**
  * @param array<FreshRSS_Feed> $feeds
- * @return array<array<string,string|bool|int>>
+ * @return list<array<string,string|bool|int>>
  */
 function feedsToOutlines(array $feeds, bool $excludeMutedFeeds = false): array {
 	$outlines = [];
@@ -82,8 +82,19 @@ function feedsToOutlines(array $feeds, bool $excludeMutedFeeds = false): array {
 			$outline['frss:cssFullContent'] = htmlspecialchars_decode($feed->pathEntries(), ENT_QUOTES);
 		}
 
+		if (!empty($feed->attributeArray('path_entries_conditions'))) {
+			$conditions = '';
+			foreach ($feed->attributeArray('path_entries_conditions') as $condition) {
+				if (is_string($condition)) {
+					$conditions .= $condition . "\n";
+				}
+			}
+			$conditions = trim($conditions);
+			$outline['frss:cssFullContentConditions'] = $conditions;
+		}
+
 		if ($feed->attributeString('path_entries_filter') != '') {
-			$outline['frss:cssFullContentFilter'] = $feed->attributeString('path_entries_filter');
+			$outline['frss:cssContentFilter'] = $feed->attributeString('path_entries_filter');
 		}
 
 		$curl_params = $feed->attributeArray('curl_params');
@@ -96,12 +107,17 @@ function feedsToOutlines(array $feeds, bool $excludeMutedFeeds = false): array {
 			$outline['frss:CURLOPT_POSTFIELDS'] = $curl_params[CURLOPT_POSTFIELDS] ?? null;
 			$outline['frss:CURLOPT_PROXY'] = $curl_params[CURLOPT_PROXY] ?? null;
 			$outline['frss:CURLOPT_PROXYTYPE'] = $curl_params[CURLOPT_PROXYTYPE] ?? null;
+			if ($outline['frss:CURLOPT_PROXYTYPE'] === 3) {	// Legacy for NONE
+				$outline['frss:CURLOPT_PROXYTYPE'] = -1;
+			}
 			$outline['frss:CURLOPT_USERAGENT'] = $curl_params[CURLOPT_USERAGENT] ?? null;
 
 			if (!empty($curl_params[CURLOPT_HTTPHEADER]) && is_array($curl_params[CURLOPT_HTTPHEADER])) {
 				$headers = '';
 				foreach ($curl_params[CURLOPT_HTTPHEADER] as $header) {
-					$headers .= $header . "\n";
+					if (is_string($header)) {
+						$headers .= $header . "\n";
+					}
 				}
 				$headers = trim($headers);
 				$outline['frss:CURLOPT_HTTPHEADER'] = $headers;

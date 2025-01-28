@@ -61,7 +61,7 @@ docker exec --user www-data freshrss cli/list-users.php
 Example of installation via command line:
 
 ```sh
-docker exec --user www-data freshrss cli/do-install.php --default_user freshrss
+docker exec --user www-data freshrss cli/do-install.php --default-user freshrss
 
 docker exec --user www-data freshrss cli/create-user.php --user freshrss --password freshrss
 ```
@@ -274,6 +274,7 @@ sudo nano /var/lib/docker/volumes/freshrss_data/_data/config.php
 First, put variables such as passwords in your `.env` file, which can live where your `docker-compose.yml` should be. See [`example.env`](./freshrss/example.env).
 
 ```ini
+BASE_URL=https://freshrss.example.net
 ADMIN_EMAIL=admin@example.net
 ADMIN_PASSWORD=freshrss
 ADMIN_API_PASSWORD=freshrss
@@ -365,7 +366,7 @@ services:
         --db-password ${DB_PASSWORD}
         --db-type pgsql
         --db-user ${DB_USER}
-        --default_user admin
+        --default-user admin
         --language en
       FRESHRSS_USER: |-
         --api-password ${ADMIN_API_PASSWORD}

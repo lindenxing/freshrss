@@ -10,7 +10,7 @@ jobs:
 
   tests:
     # https://github.com/actions/virtual-environments
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Git checkout source code
@@ -48,6 +48,9 @@ jobs:
 
     - name: PHPStan
       run: composer run-script phpstan
+
+    - name: PHPStan Next
+      run: composer run-script phpstan-next
 
     # NPM tests
 

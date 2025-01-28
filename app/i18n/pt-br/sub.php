@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Adicionar antes do conteúdo existente',
 			'replace' => 'Substituir o conteúdo existente',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Usar cookies ao buscar pelo conteúdo de artigos',
 		'css_cookie_help' => 'Exemplo: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Retorna RSS feeds truncados (atenção, requer mais tempo!)',
 		'css_path' => 'Caminho do CSS do artigo no site original',
 		'css_path_filter' => array(
 			'_' => 'Seletor CSS dos elementos a serem removidos',
-			'help' => 'O seletor CSS pode ser uma lista com: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'O seletor CSS pode ser uma lista com: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Descrição',
 		'empty' => 'Este feed está vazio. Por favor verifique ele ainda é mantido.',
-		'error' => 'Este feed encontra-se com problema. Por favor verifique se ele ainda está disponível e atualize-o.',
+		'error' => 'Este feed encontra-se com problema. Por favor verifique se ele ainda está disponível.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Download',	// IGNORE
 			'help' => 'Arquivo XML (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',	// DIRTY
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'Nenhum feed selecionado.',
 		'number_entries' => '%d artigos',
 		'open_feed' => 'Open feed %s',	// TODO
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Visibilidade',
 			'archived' => 'Não exibir (arquivado)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Adicionar OPML dinâmico',
 		'add_feed' => 'Adicionar um feed',
 		'add_label' => 'Adicionar uma etiqueta',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => 'Deletar uma etiqueta',
 		'feed_management' => 'Gerenciamento dos RSS feeds',
 		'rename_label' => 'Renomear uma etiqueta',

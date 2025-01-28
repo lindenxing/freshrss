@@ -53,6 +53,7 @@ return array (
 	#	Set to `true` to mark it unread, or `false` to leave it as-is.
 	'mark_updated_article_unread' => false, //TODO: -1 => ignore, 0 => update, 1 => update and mark as unread
 
+	'sort' => 'id',
 	'sort_order' => 'DESC',
 	'anon_access' => false,
 	'mark_when' => array (

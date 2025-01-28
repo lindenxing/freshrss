@@ -105,7 +105,13 @@ return array(
 	),
 	'profile' => array(
 		'_' => 'Správca profilu',
-		'api' => 'Správa API',
+		'api' => array(
+			'_' => 'Správa API',
+			'check_link' => 'Check API status via: <kbd><a href="../api/" target="_blank">%s</a></kbd>',	// TODO
+			'disabled' => 'The API access is disabled.',	// TODO
+			'documentation_link' => 'See the <a href="https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target="_blank">documentation and list of known apps</a>',	// TODO
+			'help' => 'See <a href="http://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target=_blank>documentation</a>',	// TODO
+		),
 		'delete' => array(
 			'_' => 'Vymazanie účtu',
 			'warn' => 'Váš účet a všetky údaje v ňom budú vymazané.',
@@ -132,6 +138,8 @@ return array(
 			'tags' => 'Zobraziť podľa štítku',
 			'type' => 'Typ',
 		),
+		'get_A' => 'Show all feeds, also those shown in their category',	// TODO
+		'get_Z' => 'Show all feeds, also archived ones',	// TODO
 		'get_all' => 'Zobraziť všetky články',
 		'get_all_labels' => 'Zobraziť články so všetkými štítkami',
 		'get_category' => 'Zobraziť kategóriu “%s”',
@@ -143,12 +151,20 @@ return array(
 		'image_url' => 'Image URL',	// TODO
 		'name' => 'Meno',
 		'no_filter' => 'Žiadny filter',
+		'no_queries' => array(
+			'_' => 'No user queries are saved yet.',	// TODO
+			'help' => 'See <a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">documentation</a>',	// TODO
+		),
 		'number' => 'Dopyt číslo %d',
 		'order_asc' => 'Zobraziť staršie články hore',
 		'order_desc' => 'Zobraziť novšie články hore',
 		'search' => 'Vyhľadáva sa: “%s”',
 		'share' => array(
 			'_' => 'Zdieľať odkaz pre tento dopyt',
+			'disabled' => array(
+				'_' => 'disabled',	// TODO
+				'title' => 'Sharing',	// TODO
+			),
 			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Pošlite tento odkaz ak chcete zdielať dopyt s kýmkoľvek',
 			'html' => 'Zdielateľný odkaz na HTML stránku',
@@ -243,12 +259,13 @@ return array(
 		'show' => array(
 			'_' => 'Článkov na zobrazenie',
 			'active_category' => 'Aktívna kategória',
-			'adaptive' => 'Vyberte zobrazenie',
+			'adaptive' => 'Show unreads if any, all articles otherwise',	// TODO
 			'all_articles' => 'Zobraziť všetky články',
 			'all_categories' => 'Všetky kategórie',
 			'no_category' => 'Bez kategŕie',
 			'remember_categories' => 'Zapamätať otvorené kategórie',
 			'unread' => 'Zobraziť iba neprečítané',
+			'unread_or_favorite' => 'Show unreads and favourites',	// TODO
 		),
 		'show_fav_unread_help' => 'Týka sa aj štítkov',
 		'sides_close_article' => 'Po kliknutí mimo textu článku sa článok zatvorí',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => 'Zdieľanie',
 		'add' => 'Pridať spôsob zdieľania',
+		'bluesky' => 'Bluesky',	// TODO
 		'deprecated' => 'Táto služba nie je podporovaná a bude z FreshRSS odstránená v <a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="Pre viac informácií otvorte dokumentáciu" target="_blank">budúcich verziách</a>.',
 		'diaspora' => 'Diaspora*',	// IGNORE
 		'email' => 'E-mail',	// IGNORE

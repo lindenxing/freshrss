@@ -14,10 +14,11 @@ return array(
 	'action' => array(
 		'actualize' => 'Aktualizovat kanály',
 		'add' => 'Přidat',
-		'back' => '← Jít zpět',
 		'back_to_rss_feeds' => '← Jít zpět na vaše kanály RSS',
 		'cancel' => 'Zrušit',
 		'create' => 'Vytvořit',
+		'delete_all_feeds' => 'Delete all feeds',	// TODO
+		'delete_errored_feeds' => 'Delete feeds with errors',	// TODO
 		'delete_muted_feeds' => 'Odstranění ztlumených zdrojů',
 		'demote' => 'Snížit úroveň',
 		'disable' => 'Zakázat',
@@ -210,6 +211,7 @@ return array(
 		'archiveIS' => 'archive.is',	// IGNORE
 		'archiveORG' => 'archive.org',	// IGNORE
 		'archivePH' => 'archive.ph',	// IGNORE
+		'bluesky' => 'Bluesky',	// TODO
 		'buffer' => 'Buffer',	// IGNORE
 		'clipboard' => 'Schránka',
 		'diaspora' => 'Diaspora*',	// IGNORE

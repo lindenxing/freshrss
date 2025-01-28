@@ -105,7 +105,13 @@ return array(
 	),
 	'profile' => array(
 		'_' => 'Správa profilu',
-		'api' => 'Správa API',
+		'api' => array(
+			'_' => 'Správa API',
+			'check_link' => 'Check API status via: <kbd><a href="../api/" target="_blank">%s</a></kbd>',	// TODO
+			'disabled' => 'The API access is disabled.',	// TODO
+			'documentation_link' => 'See the <a href="https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target="_blank">documentation and list of known apps</a>',	// TODO
+			'help' => 'See <a href="http://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target=_blank>documentation</a>',	// TODO
+		),
 		'delete' => array(
 			'_' => 'Odstranění účtu',
 			'warn' => 'Váš účet bude odstraněn spolu se všemi souvisejícími daty.',
@@ -132,6 +138,8 @@ return array(
 			'tags' => 'Zobrazit podle štítku',
 			'type' => 'Typ',
 		),
+		'get_A' => 'Show all feeds, also those shown in their category',	// TODO
+		'get_Z' => 'Show all feeds, also archived ones',	// TODO
 		'get_all' => 'Zobrazit všechny články',
 		'get_all_labels' => 'Zobrazit články s libovolným štítkem',
 		'get_category' => 'Zobrazit kategorii „%s“',
@@ -143,12 +151,20 @@ return array(
 		'image_url' => 'Image URL',	// TODO
 		'name' => 'Název',
 		'no_filter' => 'Žádný filtr',
+		'no_queries' => array(
+			'_' => 'No user queries are saved yet.',	// TODO
+			'help' => 'See <a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">documentation</a>',	// TODO
+		),
 		'number' => 'Dotaz č. %d',
 		'order_asc' => 'Zobrazit nejdříve nejstarší články',
 		'order_desc' => 'Zobrazit nejdříve nejnovější články',
 		'search' => 'Hledat „%s“',
 		'share' => array(
 			'_' => 'Sdílet tento dotaz pomocí odkazu',
+			'disabled' => array(
+				'_' => 'disabled',	// TODO
+				'title' => 'Sharing',	// TODO
+			),
 			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Pokud chcete tento dotaz s někým sdílet, uveďte tento odkaz.',
 			'html' => 'Odkaz na stránku HTML, který lze sdílet',
@@ -243,12 +259,13 @@ return array(
 		'show' => array(
 			'_' => 'Počet zobrazených článků',
 			'active_category' => 'Aktivní kategorie',
-			'adaptive' => 'Vyberte zobrazení',
+			'adaptive' => 'Show unreads if any, all articles otherwise',	// TODO
 			'all_articles' => 'Zobrazit všechny články',
 			'all_categories' => 'Všechny kategorie',
 			'no_category' => 'Žádná kategorie',
 			'remember_categories' => 'Zapamatovat otevřené kategorie',
 			'unread' => 'Zobrazit pouze nepřečtené',
+			'unread_or_favorite' => 'Show unreads and favourites',	// TODO
 		),
 		'show_fav_unread_help' => 'Použije se také na popisky',
 		'sides_close_article' => 'Kliknutí mimo oblast textu článku zavře článek',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => 'Sdílení',
 		'add' => 'Přidat metodu sdílení',
+		'bluesky' => 'Bluesky',	// TODO
 		'deprecated' => 'Tato služba je zastaralá a bude ze služby FreshRSS odstraněna v <a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="Otevřete dokumentaci pro další informace" target="_blank">budoucím vydání</a>.',
 		'diaspora' => 'Diaspora*',	// IGNORE
 		'email' => 'E-mail',

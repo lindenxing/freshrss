@@ -49,7 +49,7 @@
 		}
 ?>
 		<link rel="alternate" type="application/rss+xml" title="<?= $this->rss_title ?>" href="<?= Minz_Url::display($url_rss) ?>" />
-<?php } if (FreshRSS_Context::isAll() || FreshRSS_Context::isCategory() || FreshRSS_Context::isFeed()) {
+<?php } if (FreshRSS_Context::isAll() || FreshRSS_Context::isAllAndCategories() || FreshRSS_Context::isAllAndArchived() || FreshRSS_Context::isCategory() || FreshRSS_Context::isFeed()) {
 		$opml_rss = $url_base;
 		$opml_rss['a'] = 'opml';
 		$opml_rss['params']['user'] = Minz_User::name() ?? '';

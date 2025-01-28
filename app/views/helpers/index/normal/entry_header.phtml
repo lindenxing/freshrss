@@ -15,7 +15,7 @@
 	if ($this->feed === null || $this->entry === null) {
 		return;
 	}
-?><ul class="horizontal-list flux_header website<?= $topline_website ?>" data-website-name="<?= $this->feed->name() ?>" data-article-authors="<?= implode(', ', $this->entry->authors()) ?>"><?php
+?><ul class="horizontal-list flux_header website<?= $topline_website ?>" data-website-name="<?= $this->feed->name() ?>" data-article-authors="<?= implode(' · ', $this->entry->authors()) ?>"><?php
 	if (FreshRSS_Auth::hasAccess()) {
 		if ($topline_read) {
 			?><li class="item manage"><?php
@@ -59,16 +59,7 @@
 	<li class="item titleAuthorSummaryDate">
 		<a target="_blank" rel="noreferrer" href="<?= $this->entry->link() ?>" class="item-element title<?= (($topline_thumbnail !== 'none') || $topline_summary) ? ' multiline' : '' ?>" dir="auto"><?= $this->entry->title() ?><?php
 		if ($topline_display_authors):
-			?><span class="author"><?php
-			$authors = $this->entry->authors();
-			if (is_array($authors)) {
-				$first = true;
-				foreach ($authors as $author) {
-					echo $first ? $author : ', ' . $author;
-					$first = false;
-				}
-			}
-			?></span><?php
+			?> <span class="author"><?= implode(' · ', $this->entry->authors()) ?></span><?php
 		endif;
 		?></a>
 	<?php

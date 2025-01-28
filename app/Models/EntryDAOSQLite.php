@@ -29,6 +29,11 @@ class FreshRSS_EntryDAOSQLite extends FreshRSS_EntryDAO {
 	}
 
 	#[\Override]
+	public static function sqlRandom(): string {
+		return 'RANDOM()';
+	}
+
+	#[\Override]
 	protected static function sqlRegex(string $expression, string $regex, array &$values): string {
 		$values[] = $regex;
 		return "{$expression} REGEXP ?";
@@ -49,11 +54,10 @@ class FreshRSS_EntryDAOSQLite extends FreshRSS_EntryDAO {
 		);
 	}
 
-	/** @param array<string|int> $errorInfo */
+	/** @param array{0:string,1:int,2:string} $errorInfo */
 	#[\Override]
 	protected function autoUpdateDb(array $errorInfo): bool {
-		if (($tableInfo = $this->pdo->query("PRAGMA table_info('entry')")) !== false) {
-			$columns = $tableInfo->fetchAll(PDO::FETCH_COLUMN, 1) ?: [];
+		if (($tableInfo = $this->pdo->query("PRAGMA table_info('entry')")) !== false && ($columns = $tableInfo->fetchAll(PDO::FETCH_COLUMN, 1)) !== false) {
 			foreach (['attributes'] as $column) {
 				if (!in_array($column, $columns, true)) {
 					return $this->addColumn($column);
@@ -148,7 +152,7 @@ SQL;
 	 * @return int|false affected rows
 	 */
 	#[\Override]
-	public function markReadTag($id = 0, string $idMax = '0', ?FreshRSS_BooleanSearch $filters = null, int $state = 0, bool $is_read = true): int|false {
+	public function markReadTag(int $id = 0, string $idMax = '0', ?FreshRSS_BooleanSearch $filters = null, int $state = 0, bool $is_read = true): int|false {
 		FreshRSS_UserDAO::touch();
 		if ($idMax == 0) {
 			$idMax = time() . '000000';
@@ -164,7 +168,7 @@ SQL;
 			$values[] = $id;
 		}
 
-		[$searchValues, $search] = $this->sqlListEntriesWhere('e.', $filters, $state);
+		[$searchValues, $search] = $this->sqlListEntriesWhere(alias: 'e.', state: $state, filters: $filters);
 
 		$stm = $this->pdo->prepare($sql . $search);
 		if ($stm === false || !$stm->execute(array_merge($values, $searchValues))) {

@@ -39,8 +39,8 @@ class FreshRSS_extension_Controller extends FreshRSS_ActionController {
 	}
 
 	/**
-	 * fetch extension list from GitHub
-	 * @return array<array{'name':string,'author':string,'description':string,'version':string,'entrypoint':string,'type':'system'|'user','url':string,'method':string,'directory':string}>
+	 * Fetch extension list from GitHub
+	 * @return list<array{name:string,author:string,description:string,version:string,entrypoint:string,type:'system'|'user',url:string,method:string,directory:string}>
 	 */
 	protected function getAvailableExtensionList(): array {
 		$extensionListUrl = 'https://raw.githubusercontent.com/FreshRSS/Extensions/master/extensions.json';
@@ -76,17 +76,24 @@ class FreshRSS_extension_Controller extends FreshRSS_ActionController {
 		// the current implementation for now, unless it becomes too much effort maintain the extension list manually
 		$extensions = [];
 		foreach ($list['extensions'] as $extension) {
+			if (!is_array($extension)) {
+				continue;
+			}
 			if (isset($extension['version']) && is_numeric($extension['version'])) {
 				$extension['version'] = (string)$extension['version'];
 			}
-			foreach (['author', 'description', 'directory', 'entrypoint', 'method', 'name', 'type', 'url', 'version'] as $key) {
-				if (empty($extension[$key]) || !is_string($extension[$key])) {
+			$keys = ['author', 'description', 'directory', 'entrypoint', 'method', 'name', 'type', 'url', 'version'];
+			$extension = array_intersect_key($extension, array_flip($keys));	// Keep only valid keys
+			$extension = array_filter($extension, 'is_string');
+			foreach ($keys as $key) {
+				if (empty($extension[$key])) {
 					continue 2;
 				}
 			}
-			if (!in_array($extension['type'], ['system', 'user'], true)) {
+			if (!in_array($extension['type'], ['system', 'user'], true) || trim($extension['name']) === '') {
 				continue;
 			}
+			/** @var array{name:string,author:string,description:string,version:string,entrypoint:string,type:'system'|'user',url:string,method:string,directory:string} $extension */
 			$extensions[] = $extension;
 		}
 		return $extensions;

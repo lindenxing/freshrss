@@ -14,9 +14,9 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'Sta bezoekers toe om artikelen te lezen van de standaard gebruiker (%s)',
 		'allow_anonymous_refresh' => 'Sta bezoekers toe om de artikelen te vernieuwen',
-		'api_enabled' => 'Sta <abbr>API</abbr> toegang toe <small>(nodig voor mobiele apps)</small>',
+		'api_enabled' => 'Sta <abbr>API</abbr> toegang toe <small>(nodig voor mobiele apps and sharing user queries)</small>',	// DIRTY
 		'form' => 'Web formulier (traditioneel, JavaScript vereist)',
-		'http' => 'HTTP (voor gevorderde gebruikers met HTTPS)',
+		'http' => 'HTTP (geavanceerd: beheerd door webserver, OIDC, SSO…)',
 		'none' => 'Geen (gevaarlijk)',
 		'title' => 'Authenticatie',
 		'token' => 'Hoofdauthenticatietoken',
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => 'Overzicht',
 		'no_idle' => 'Er is geen gepauzeerde feed!',
 		'number_entries' => '%d artikelen',
+		'overview' => 'Overview',	// TODO
 		'percent_of_total' => '% van totaal',
-		'repartition' => 'Artikelverdeling',
+		'repartition' => 'Artikelverdeling: %s',
 		'status_favorites' => 'Favorieten',
 		'status_read' => 'Gelezen',
 		'status_total' => 'Totaal',

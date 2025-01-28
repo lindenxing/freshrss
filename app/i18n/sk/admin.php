@@ -14,9 +14,9 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'Povoliť čítanie článkov prednastaveného používateľa (%s) bez prihlásenia.',
 		'allow_anonymous_refresh' => 'Povoliť obnovenie článkov bez prihlásenia',
-		'api_enabled' => 'Povoliť prístup cez <abbr>API</abbr> <small>(vyžadujú mobilné aplikácie)</small>',
+		'api_enabled' => 'Povoliť prístup cez <abbr>API</abbr> <small>(vyžadujú mobilné aplikácie and sharing user queries)</small>',	// DIRTY
 		'form' => 'Webový formulár (traditičný, vyžaduje JavaScript)',
-		'http' => 'HTTP (pre pokročilých používateľov s HTTPS)',
+		'http' => 'HTTP (advanced: managed by Web server, OIDC, SSO…)',	// TODO
 		'none' => 'Žiadny (nebezpečné)',
 		'title' => 'Prihlásenie',
 		'token' => 'Hlavný prihlasovací token',
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => 'Všetky kanály',
 		'no_idle' => 'Žiadne neaktívne kanály!',
 		'number_entries' => 'Počet článkov: %d',
+		'overview' => 'Overview',	// TODO
 		'percent_of_total' => 'Z celkového počtu: %',
-		'repartition' => 'Rozdelenie článkov',
+		'repartition' => 'Rozdelenie článkov: %s',
 		'status_favorites' => 'Obľúbené',
 		'status_read' => 'Prečítané',
 		'status_total' => 'Spolu',

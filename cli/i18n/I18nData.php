@@ -3,15 +3,11 @@ declare(strict_types=1);
 
 class I18nData {
 
+	/** @var string */
 	public const REFERENCE_LANGUAGE = 'en';
 
-	/** @var array<string,array<string,array<string,I18nValue>>> */
-	private array $data;
-
 	/** @param array<string,array<string,array<string,I18nValue>>> $data */
-	public function __construct(array $data) {
-		$this->data = $data;
-
+	public function __construct(private array $data) {
 		$this->addMissingKeysFromReference();
 		$this->removeExtraKeysFromOtherLanguages();
 		$this->processValueStates();
@@ -79,22 +75,21 @@ class I18nData {
 
 	/**
 	 * Return the available languages
-	 * @return array<string>
+	 * @return list<string>
 	 */
 	public function getAvailableLanguages(): array {
 		$languages = array_keys($this->data);
 		sort($languages);
-
 		return $languages;
 	}
 
 	/**
 	 * Return all available languages without the reference language
-	 * @return array<string>
+	 * @return list<string>
 	 */
 	private function getNonReferenceLanguages(): array {
-		return array_filter(array_keys($this->data),
-			static fn(string $value) => static::REFERENCE_LANGUAGE !== $value);
+		return array_values(array_filter(array_keys($this->data),
+			static fn(string $value) => static::REFERENCE_LANGUAGE !== $value));
 	}
 
 	/**
@@ -134,7 +129,7 @@ class I18nData {
 	 * Return the siblings for a specified key.
 	 * To get the siblings, we need to find all matches with the parent.
 	 *
-	 * @return array<string>
+	 * @return list<string>
 	 */
 	private function getSiblings(string $key): array {
 		if (!array_key_exists($this->getFilenamePrefix($key), $this->data[static::REFERENCE_LANGUAGE])) {
@@ -144,7 +139,7 @@ class I18nData {
 		$keys = array_keys($this->data[static::REFERENCE_LANGUAGE][$this->getFilenamePrefix($key)]);
 		$parent = $this->getParentKey($key);
 
-		return array_values(array_filter($keys, static fn(string $element) => false !== strpos($element, $parent)));
+		return array_values(array_filter($keys, static fn(string $element) => str_contains($element, $parent)));
 	}
 
 	/**
@@ -185,7 +180,7 @@ class I18nData {
 			if ($element === $key) {
 				return false;
 			}
-			return false !== strpos($element, $key);
+			return str_contains($element, $key);
 		}));
 
 		return count($children) !== 0;

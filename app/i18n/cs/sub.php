@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Přidat před existující obsah',
 			'replace' => 'Nahradit existující obsah',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Použít cookies při načítání obsahu článku',
 		'css_cookie_help' => 'Příklad: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Načte oříznuté kanály RSS (pozor, náročnější na čas!)',
 		'css_path' => 'Přepínač CSS článku na původních webových stránkách',
 		'css_path_filter' => array(
 			'_' => 'selektor CSS prvků, které mají být odstraněny',
-			'help' => 'Selektor CSS může být seznam, například: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'Selektor CSS může být seznam, například: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Popis',
 		'empty' => 'Tento kanál je prázdný. Ověřte prosím, zda je stále udržován.',
-		'error' => 'Vyskytl se problém s kanálem. Ověřte prosím, že je vždy dostupný, pak ho aktualizujte.',
+		'error' => 'Vyskytl se problém s kanálem. Ověřte prosím, že je vždy dostupný.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Stáhnout',
 			'help' => 'Soubor XML (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',	// DIRTY
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'Nejsou vybrány žádné kanály.',
 		'number_entries' => '%d článků',
 		'open_feed' => 'Open feed %s',	// TODO
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Viditelnost',
 			'archived' => 'Nezobrazovat (archivováno)',
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Přidání dynamického OPML',
 		'add_feed' => 'Přidat kanál',
 		'add_label' => 'Přidat popisek',
+		'add_opml_category' => 'OPML category name',	// TODO
 		'delete_label' => 'Odstranit popisek',
 		'feed_management' => 'Správa kanálů RSS',
 		'rename_label' => 'Přejmenovat popisek',

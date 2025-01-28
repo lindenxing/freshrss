@@ -2,7 +2,7 @@
 # if you cannot set Apache `DocumentRoot` to `./p/` as recommended.
 
 # Deny files starting with a dot or without extension or with specific extensions
-<FilesMatch "^\.|^[^.]+$|\.(config\.js|gz|json|md|neon|sqlite|xml|ya?ml|zip)$">
+<FilesMatch "^\.|^[^.]+$|\.(config\.js|gz|md|neon|sqlite|xml|ya?ml|zip)$">
 	Require all denied
 </FilesMatch>
 

@@ -35,7 +35,7 @@ class FreshRSS_category_Controller extends FreshRSS_ActionController {
 		$url_redirect = ['c' => 'subscription', 'a' => 'add'];
 
 		$limits = FreshRSS_Context::systemConf()->limits;
-		$this->view->categories = $catDAO->listCategories(false) ?: [];
+		$this->view->categories = $catDAO->listCategories(prePopulateFeeds: false);
 
 		if (count($this->view->categories) >= $limits['max_categories']) {
 			Minz_Request::bad(_t('feedback.sub.category.over_max', $limits['max_categories']), $url_redirect);
@@ -197,7 +197,6 @@ class FreshRSS_category_Controller extends FreshRSS_ActionController {
 			}
 
 			// Remove related queries.
-			/** @var array<array{'get'?:string,'name'?:string,'order'?:string,'search'?:string,'state'?:int,'url'?:string}> $queries */
 			$queries = remove_query_by_get('c_' . $id, FreshRSS_Context::userConf()->queries);
 			FreshRSS_Context::userConf()->queries = $queries;
 			FreshRSS_Context::userConf()->save();
@@ -229,16 +228,16 @@ class FreshRSS_category_Controller extends FreshRSS_ActionController {
 			}
 
 			$muted = Minz_Request::paramTernary('muted');
+			$errored = Minz_Request::paramTernary('errored');
 
 			// List feeds to remove then related user queries.
-			$feeds = $feedDAO->listByCategory($id, $muted);
+			$feeds = $feedDAO->listByCategory($id, $muted, $errored);
 
-			if ($feedDAO->deleteFeedByCategory($id, $muted)) {
+			if ($feedDAO->deleteFeedByCategory($id, $muted, $errored)) {
 				// TODO: Delete old favicons
 
 				// Remove related queries
 				foreach ($feeds as $feed) {
-					/** @var array<array{'get'?:string,'name'?:string,'order'?:string,'search'?:string,'state'?:int,'url'?:string}> */
 					$queries = remove_query_by_get('f_' . $feed->id(), FreshRSS_Context::userConf()->queries);
 					FreshRSS_Context::userConf()->queries = $queries;
 				}

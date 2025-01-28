@@ -14,10 +14,11 @@ return array(
 	'action' => array(
 		'actualize' => 'Atjaunināt barotnes',
 		'add' => 'Pievienot',
-		'back' => '← Atgriezties',
 		'back_to_rss_feeds' => '← Atgriezieties pie RSS barotnēm',
 		'cancel' => 'Atcelt',
 		'create' => 'Uztaisīt',
+		'delete_all_feeds' => 'Delete all feeds',	// TODO
+		'delete_errored_feeds' => 'Delete feeds with errors',	// TODO
 		'delete_muted_feeds' => 'Izdzēst izslēgtās barotnes',
 		'demote' => 'Pazemināt amatu',
 		'disable' => 'Izslēgt',
@@ -210,6 +211,7 @@ return array(
 		'archiveIS' => 'archive.is',	// IGNORE
 		'archiveORG' => 'archive.org',	// IGNORE
 		'archivePH' => 'archive.ph',	// IGNORE
+		'bluesky' => 'Bluesky',	// TODO
 		'buffer' => 'Buffer',	// IGNORE
 		'clipboard' => 'Starpliktuve',
 		'diaspora' => 'Diaspora*',	// IGNORE

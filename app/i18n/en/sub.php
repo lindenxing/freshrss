@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Add before existing content',
 			'replace' => 'Replace existing content',
 		),
+		'content_retrieval' => 'Content retrieval',
 		'css_cookie' => 'Use Cookies when fetching the article content',
 		'css_cookie_help' => 'Example: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Retrieves truncated RSS feeds (caution, requires more time!)',
 		'css_path' => 'Article CSS selector on original website',
 		'css_path_filter' => array(
 			'_' => 'CSS selector of the elements to remove',
-			'help' => 'A CSS selector may be a list such as: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'A CSS selector may be a list such as: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Description',
 		'empty' => 'This feed is empty. Please verify that it is still maintained.',
-		'error' => 'This feed has encountered a problem. Please verify that it is always reachable then update it.',
+		'error' => 'This feed has encountered a problem. If this situation persists, please verify that it is still reachable.',
 		'export-as-opml' => array(
 			'download' => 'Download',
 			'help' => 'XML file (data subset. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">See documentation</a>)',
@@ -193,7 +194,7 @@ return array(
 		),
 		'method_help' => 'The POST payload has automatic support for <code>application/x-www-form-urlencoded</code> and <code>application/json</code>',
 		'method_postparams' => 'Payload for POST',
-		'moved_category_deleted' => 'When you delete a category, its feeds are automatically classified under <em>%s</em>.',
+		'moved_category_deleted' => 'When you remove a category, its feeds are automatically classified under <em>%s</em>.',
 		'mute' => array(
 			'_' => 'mute',
 			'state_is_muted' => 'This feed is muted',
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'No feed selected.',
 		'number_entries' => '%d articles',
 		'open_feed' => 'Open feed %s',
+		'path_entries_conditions' => 'Conditions for content retrieval',
 		'priority' => array(
 			'_' => 'Visibility',
 			'archived' => 'Do not show (archived)',
@@ -215,7 +217,7 @@ return array(
 			'show_rendered' => 'Show content',
 		),
 		'show' => array(
-			'all' => 'Show all feeds',
+			'all' => 'All feeds',
 			'error' => 'Show only feeds with errors',
 		),
 		'showing' => array(
@@ -285,6 +287,7 @@ return array(
 		'add_dynamic_opml' => 'Add dynamic OPML',
 		'add_feed' => 'Add a feed',
 		'add_label' => 'Add a label',
+		'add_opml_category' => 'OPML category name',
 		'delete_label' => 'Delete a label',
 		'feed_management' => 'RSS feeds management',
 		'rename_label' => 'Rename a label',

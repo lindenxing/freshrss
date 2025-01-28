@@ -29,14 +29,14 @@ class FreshRSS_StatsDAO extends Minz_ModelPdo {
 	 *   - unread entries
 	 *   - favorite entries
 	 *
-	 * @return array{'total':int,'count_unreads':int,'count_reads':int,'count_favorites':int}|false
+	 * @return array{total:int,count_unreads:int,count_reads:int,count_favorites:int}|false
 	 */
 	public function calculateEntryRepartitionPerFeed(?int $feed = null, bool $only_main = false): array|false {
 		$filter = '';
 		if ($only_main) {
 			$filter .= 'AND f.priority = 10';
 		}
-		if (!is_null($feed)) {
+		if ($feed !== null) {
 			$filter .= "AND e.id_feed = {$feed}";
 		}
 		$sql = <<<SQL
@@ -49,10 +49,9 @@ WHERE e.id_feed = f.id
 {$filter}
 SQL;
 		$res = $this->fetchAssoc($sql);
-		if (!empty($res[0])) {
-			$dao = $res[0];
-			/** @var array<array{'total':int,'count_unreads':int,'count_reads':int,'count_favorites':int}> $res */
-			FreshRSS_DatabaseDAO::pdoInt($dao, ['total', 'count_unreads', 'count_reads', 'count_favorites']);
+		if (is_array($res) && !empty($res[0]) && is_array($res[0])) {
+			$dao = array_map('intval', $res[0]);
+			/** @var array{total:int,count_unreads:int,count_reads:int,count_favorites:int} $dao */
 			return $dao;
 		}
 		return false;
@@ -78,10 +77,10 @@ GROUP BY day
 ORDER BY day ASC
 SQL;
 		$res = $this->fetchAssoc($sql);
-		if ($res == false) {
+		if (!is_array($res)) {
 			return [];
 		}
-		/** @var array<array{'day':int,'count':int}> $res */
+		/** @var list<array{day:int,count:int}> $res */
 		foreach ($res as $value) {
 			$count[(int)($value['day'])] = (int)($value['count']);
 		}
@@ -123,7 +122,6 @@ SQL;
 		return $monthRepartition;
 	}
 
-
 	/**
 	 * Calculates the number of article per period per feed
 	 * @param string $period format string to use for grouping
@@ -147,19 +145,12 @@ SQL;
 		if ($res == false) {
 			return [];
 		}
-		switch ($period) {
-			case '%H':
-				$periodMax = 24;
-				break;
-			case '%w':
-				$periodMax = 7;
-				break;
-			case '%m':
-				$periodMax = 12;
-				break;
-			default:
-				$periodMax = 30;
-		}
+		$periodMax = match ($period) {
+			'%H' => 24,
+			'%w' => 7,
+			'%m' => 12,
+			default => 30,
+		};
 
 		$repartition = array_fill(0, $periodMax, 0);
 		foreach ($res as $value) {
@@ -235,7 +226,7 @@ SQL;
 
 	/**
 	 * Calculates feed count per category.
-	 * @return array<array{'label':string,'data':int}>
+	 * @return list<array{'label':string,'data':int}>
 	 */
 	public function calculateFeedByCategory(): array {
 		$sql = <<<SQL
@@ -246,14 +237,14 @@ WHERE c.id = f.category
 GROUP BY label
 ORDER BY data DESC
 SQL;
-		/** @var array<array{'label':string,'data':int}>|null @res */
+		/** @var list<array{'label':string,'data':int}>|null @res */
 		$res = $this->fetchAssoc($sql);
 		return $res == null ? [] : $res;
 	}
 
 	/**
 	 * Calculates entry count per category.
-	 * @return array<array{'label':string,'data':int}>
+	 * @return list<array{'label':string,'data':int}>
 	 */
 	public function calculateEntryByCategory(): array {
 		$sql = <<<SQL
@@ -266,13 +257,13 @@ GROUP BY label
 ORDER BY data DESC
 SQL;
 		$res = $this->fetchAssoc($sql);
-		/** @var array<array{'label':string,'data':int}>|null $res */
+		/** @var list<array{'label':string,'data':int}>|null $res */
 		return $res == null ? [] : $res;
 	}
 
 	/**
 	 * Calculates the 10 top feeds based on their number of entries
-	 * @return array<array{'id':int,'name':string,'category':string,'count':int}>
+	 * @return list<array{'id':int,'name':string,'category':string,'count':int}>
 	 */
 	public function calculateTopFeed(): array {
 		$sql = <<<SQL
@@ -288,11 +279,8 @@ ORDER BY count DESC
 LIMIT 10
 SQL;
 		$res = $this->fetchAssoc($sql);
-		/** @var array<array{'id':int,'name':string,'category':string,'count':int}>|null $res */
+		/** @var list<array{'id':int,'name':string,'category':string,'count':int}>|null $res */
 		if (is_array($res)) {
-			foreach ($res as &$dao) {
-				FreshRSS_DatabaseDAO::pdoInt($dao, ['id', 'count']);
-			}
 			return $res;
 		}
 		return [];
@@ -300,7 +288,7 @@ SQL;
 
 	/**
 	 * Calculates the last publication date for each feed
-	 * @return array<array{'id':int,'name':string,'last_date':int,'nb_articles':int}>
+	 * @return list<array{'id':int,'name':string,'last_date':int,'nb_articles':int}>
 	 */
 	public function calculateFeedLastDate(): array {
 		$sql = <<<SQL
@@ -314,11 +302,8 @@ GROUP BY f.id
 ORDER BY name
 SQL;
 		$res = $this->fetchAssoc($sql);
-		/** @var array<array{'id':int,'name':string,'last_date':int,'nb_articles':int}>|null $res */
+		/** @var list<array{'id':int,'name':string,'last_date':int,'nb_articles':int}>|null $res */
 		if (is_array($res)) {
-			foreach ($res as &$dao) {
-				FreshRSS_DatabaseDAO::pdoInt($dao, ['id', 'last_date', 'nb_articles']);
-			}
 			return $res;
 		}
 		return [];
@@ -326,7 +311,7 @@ SQL;
 
 	/**
 	 * Gets days ready for graphs
-	 * @return array<string>
+	 * @return list<string>
 	 */
 	public function getDays(): array {
 		return $this->convertToTranslatedJson([
@@ -342,7 +327,7 @@ SQL;
 
 	/**
 	 * Gets months ready for graphs
-	 * @return array<string>
+	 * @return list<string>
 	 */
 	public function getMonths(): array {
 		return $this->convertToTranslatedJson([
@@ -363,8 +348,8 @@ SQL;
 
 	/**
 	 * Translates array content
-	 * @param array<string> $data
-	 * @return array<string>
+	 * @param list<string> $data
+	 * @return list<string>
 	 */
 	private function convertToTranslatedJson(array $data = []): array {
 		$translated = array_map(static fn(string $a) => _t('gen.date.' . $a), $data);

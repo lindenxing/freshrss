@@ -105,7 +105,13 @@ return array(
 	),
 	'profile' => array(
 		'_' => ' مدیریت پروفایل',
-		'api' => ' مدیریت API',
+		'api' => array(
+			'_' => ' مدیریت API',
+			'check_link' => 'Check API status via: <kbd><a href="../api/" target="_blank">%s</a></kbd>',	// TODO
+			'disabled' => 'The API access is disabled.',	// TODO
+			'documentation_link' => 'See the <a href="https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target="_blank">documentation and list of known apps</a>',	// TODO
+			'help' => 'See <a href="http://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target=_blank>documentation</a>',	// TODO
+		),
 		'delete' => array(
 			'_' => ' حذف اکانت',
 			'warn' => ' حساب شما و تمام داده های مرتبط حذف خواهد شد.',
@@ -132,6 +138,8 @@ return array(
 			'tags' => ' نمایش بر اساس برچسب',
 			'type' => ' نوع',
 		),
+		'get_A' => 'Show all feeds, also those shown in their category',	// TODO
+		'get_Z' => 'Show all feeds, also archived ones',	// TODO
 		'get_all' => ' نمایش همه مقالات',
 		'get_all_labels' => 'Display articles with any label',	// TODO
 		'get_category' => ' دسته «%s» را نمایش دهید',
@@ -143,12 +151,20 @@ return array(
 		'image_url' => 'Image URL',	// TODO
 		'name' => ' نام',
 		'no_filter' => ' بدون فیلتر',
+		'no_queries' => array(
+			'_' => 'No user queries are saved yet.',	// TODO
+			'help' => 'See <a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">documentation</a>',	// TODO
+		),
 		'number' => ' پرس و جو n°%d',
 		'order_asc' => ' ابتدا قدیمی ترین مقالات را نمایش دهید',
 		'order_desc' => ' ابتدا جدیدترین مقالات را نمایش دهید',
 		'search' => ' «%s» را جستجو کنید',
 		'share' => array(
 			'_' => 'Share this query by link',	// TODO
+			'disabled' => array(
+				'_' => 'disabled',	// TODO
+				'title' => 'Sharing',	// TODO
+			),
 			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Give this link if you want to share this query with anyone',	// TODO
 			'html' => 'Shareable link to the HTML page',	// TODO
@@ -243,12 +259,13 @@ return array(
 		'show' => array(
 			'_' => ' مقالات برای نمایش',
 			'active_category' => ' دسته فعال',
-			'adaptive' => ' نمایش را تنظیم کنید',
+			'adaptive' => 'Show unreads if any, all articles otherwise',	// TODO
 			'all_articles' => ' نمایش همه مقالات',
 			'all_categories' => ' همه دسته ها',
 			'no_category' => ' بدون دسته',
 			'remember_categories' => ' دسته بندی های باز را به خاطر بسپارید',
 			'unread' => ' فقط خوانده نشده را نشان دهد',
+			'unread_or_favorite' => 'Show unreads and favourites',	// TODO
 		),
 		'show_fav_unread_help' => ' روی برچسب ها نیز اعمال می شود',
 		'sides_close_article' => ' با کلیک کردن خارج از ناحیه متن مقاله',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => ' اشتراک گذاری',
 		'add' => ' یک روش اشتراک گذاری اضافه کنید',
+		'bluesky' => 'Bluesky',	// TODO
 		'deprecated' => ' این سرویس منسوخ شده است و در <a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="باز کردن اسناد برای اطلاعات بیشتر" target= از FreshRSS حذف خواهد شد. "_blank">نسخه آینده</a>.',
 		'diaspora' => ' دیاسپورا*',
 		'email' => ' ایمیل',

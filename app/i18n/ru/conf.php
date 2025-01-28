@@ -105,7 +105,13 @@ return array(
 	),
 	'profile' => array(
 		'_' => 'Настройки профиля',
-		'api' => 'Настройки API',
+		'api' => array(
+			'_' => 'Настройки API',
+			'check_link' => 'Check API status via: <kbd><a href="../api/" target="_blank">%s</a></kbd>',	// TODO
+			'disabled' => 'The API access is disabled.',	// TODO
+			'documentation_link' => 'See the <a href="https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target="_blank">documentation and list of known apps</a>',	// TODO
+			'help' => 'See <a href="http://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html#access-via-mobile-app" target=_blank>documentation</a>',	// TODO
+		),
 		'delete' => array(
 			'_' => 'Удаление аккаунта',
 			'warn' => 'Ваш аккаунт и вся связанная с ним информация будут удалены.',
@@ -132,6 +138,8 @@ return array(
 			'tags' => 'Отображение по метке',
 			'type' => 'Тип',
 		),
+		'get_A' => 'Show all feeds, also those shown in their category',	// TODO
+		'get_Z' => 'Show all feeds, also archived ones',	// TODO
 		'get_all' => 'Показать все статьи',
 		'get_all_labels' => 'Показать все статьи с любыми метками',
 		'get_category' => 'Показать категорию “%s”',
@@ -143,12 +151,20 @@ return array(
 		'image_url' => 'Image URL',	// TODO
 		'name' => 'Название',
 		'no_filter' => 'Нет фильтров',
+		'no_queries' => array(
+			'_' => 'No user queries are saved yet.',	// TODO
+			'help' => 'See <a href="https://freshrss.github.io/FreshRSS/en/users/user_queries.html" target="_blank">documentation</a>',	// TODO
+		),
 		'number' => 'Запрос №%d',
 		'order_asc' => 'Показывать сначала старые статьи',
 		'order_desc' => 'Показывать сначала новые статьи',
 		'search' => 'Искать “%s”',
 		'share' => array(
 			'_' => 'Поделиться запросом по ссылке',
+			'disabled' => array(
+				'_' => 'disabled',	// TODO
+				'title' => 'Sharing',	// TODO
+			),
 			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Дайте эту ссылку, если хотите поделиться этим запросом с кем-либо',
 			'html' => 'Ссылка доступа на HTML-страницу',
@@ -243,12 +259,13 @@ return array(
 		'show' => array(
 			'_' => 'Какие статьи отображать',
 			'active_category' => 'Активную категорию',
-			'adaptive' => 'Адаптивно',
+			'adaptive' => 'Show unreads if any, all articles otherwise',	// TODO
 			'all_articles' => 'Показывать все статьи',
 			'all_categories' => 'Все категории',
 			'no_category' => 'Никакие категории',
 			'remember_categories' => 'Запоминать открытые категории',
 			'unread' => 'Только непрочитанные',
+			'unread_or_favorite' => 'Show unreads and favourites',	// TODO
 		),
 		'show_fav_unread_help' => 'Также относится к меткам',
 		'sides_close_article' => 'Нажатия мышью за пределами текста статьи закрывают статью',
@@ -272,6 +289,7 @@ return array(
 	'sharing' => array(
 		'_' => 'Обмен',
 		'add' => 'Добавить способ обмена',
+		'bluesky' => 'Bluesky',	// TODO
 		'deprecated' => 'Этот сервис устарел и будет удалён из FreshRSS в <a href="https://freshrss.github.io/FreshRSS/en/users/08_sharing_services.html" title="Открыть документацию для большей информации" target="_blank">будущем релизе</a>.',
 		'diaspora' => 'Diaspora*',	// IGNORE
 		'email' => 'Электронная почта',

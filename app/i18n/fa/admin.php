@@ -14,9 +14,9 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => ' اجازه خواندن ناشناس مقالات کاربر پیش‌فرض (%s)',
 		'allow_anonymous_refresh' => ' اجازه بازخوانی ناشناس مقالات را بدهید',
-		'api_enabled' => ' اجازه دسترسی به <abbr>API</abbr> <small>(الزامی برای برنامه های تلفن همراه)</small>',
+		'api_enabled' => ' اجازه دسترسی به <abbr>API</abbr> <small>(الزامی برای برنامه های تلفن همراه and sharing user queries and sharing user queries)</small>',	// DIRTY
 		'form' => ' فرم وب (سنتی',
-		'http' => ' HTTP (برای کاربران پیشرفته با HTTPS)',
+		'http' => 'HTTP (advanced: managed by Web server, OIDC, SSO…)',	// TODO
 		'none' => ' هیچ (خطرناک)',
 		'title' => ' احراز هویت',
 		'token' => 'Master authentication token',	// TODO
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => ' جریان اصلی',
 		'no_idle' => ' هیچ فید بیکار وجود ندارد!',
 		'number_entries' => ' %d مقاله',
+		'overview' => 'Overview',	// TODO
 		'percent_of_total' => ' درصد از کل',
-		'repartition' => ' تقسیم مجدد مقالات',
+		'repartition' => ' تقسیم مجدد مقالات: %s',	// DIRTY
 		'status_favorites' => ' موارد دلخواه',
 		'status_read' => ' بخوانید',
 		'status_total' => ' مجموع',

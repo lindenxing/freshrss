@@ -543,7 +543,7 @@ button.as-link[disabled] {
 	background-color: var(--dark-background-color2);
 }
 
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: var(--dark-background-color1);
 	border: none;
 }

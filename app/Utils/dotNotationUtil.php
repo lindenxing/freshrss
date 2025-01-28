@@ -31,7 +31,7 @@ final class FreshRSS_dotNotation_Util
 		if (static::exists($array, $key)) {
 			return $array[$key];
 		}
-		if (strpos($key, '.') === false) {
+		if (str_contains($key, '.') === false) {
 			return $array[$key] ?? static::value($default);
 		}
 		foreach (explode('.', $key) as $segment) {
@@ -65,6 +65,7 @@ final class FreshRSS_dotNotation_Util
 	 * Determine if the given key exists in the provided array.
 	 *
 	 * @param \ArrayAccess<string,mixed>|array<string,mixed>|mixed $array
+	 * @phpstan-assert-if-true \ArrayAccess<string,mixed>|array<string,mixed> $array
 	 */
 	private static function exists($array, string $key): bool {
 		if ($array instanceof \ArrayAccess) {
@@ -85,7 +86,7 @@ final class FreshRSS_dotNotation_Util
 	 * mapping fields from the JSON object into RSS equivalents
 	 * according to the dot-separated paths
 	 *
-	 * @param array<string> $jf json feed
+	 * @param array<int|string,mixed> $jf json feed
 	 * @param string $feedSourceUrl the source URL for the feed
 	 * @param array<string,string> $dotNotation dot notation to map JSON into RSS
 	 * @param string $defaultRssTitle Default title of the RSS feed, if not already provided in dotNotation `feedTitle`

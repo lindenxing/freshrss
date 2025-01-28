@@ -14,9 +14,9 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'Izinkan pembacaan anonim artikel pengguna default (%s)',
 		'allow_anonymous_refresh' => 'Izinkan refresh artikel anonim',
-		'api_enabled' => 'Izinkan <abbr>API</abbr> akses <small>(Diperlukan untuk aplikasi seluler)</small>',	// DIRTY
+		'api_enabled' => 'Izinkan <abbr>API</abbr> akses <small>(Diperlukan untuk aplikasi seluler and sharing user queries)</small>',	// DIRTY
 		'form' => 'Web form (traditional, membutuhkan JavaScript)',
-		'http' => 'HTTP (untuk pengguna tingkat lanjut HTTPS)',
+		'http' => 'HTTP (advanced: managed by Web server, OIDC, SSO…)',	// TODO
 		'none' => 'None (berbahaya)',
 		'title' => 'Autentikasi',
 		'token' => 'Token autentikasi master',
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => 'Aliran utama',
 		'no_idle' => 'Tidak ada idle feed!',
 		'number_entries' => '%d artikel',
+		'overview' => 'Overview',	// TODO
 		'percent_of_total' => '% dari total',
-		'repartition' => 'Mengembalikan artikel',
+		'repartition' => 'Mengembalikan artikel: %s',
 		'status_favorites' => 'Favorites',
 		'status_read' => 'Terbaca',
 		'status_total' => 'Total',	// TODO

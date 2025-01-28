@@ -46,7 +46,7 @@ class FreshRSS_entry_Controller extends FreshRSS_ActionController {
 	public function readAction(): void {
 		$get = Minz_Request::paramString('get');
 		$next_get = Minz_Request::paramString('nextGet') ?: $get;
-		$id_max = Minz_Request::paramString('idMax') ?: '0';
+		$id_max = Minz_Request::paramString('idMax');
 		if (!ctype_digit($id_max)) {
 			$id_max = '0';
 		}
@@ -96,6 +96,14 @@ class FreshRSS_entry_Controller extends FreshRSS_ActionController {
 						$entryDAO->markReadEntries($id_max, false, FreshRSS_Feed::PRIORITY_MAIN_STREAM, FreshRSS_Feed::PRIORITY_IMPORTANT,
 							FreshRSS_Context::$search, FreshRSS_Context::$state, $is_read);
 						break;
+					case 'A':
+						$entryDAO->markReadEntries($id_max, false, FreshRSS_Feed::PRIORITY_CATEGORY, FreshRSS_Feed::PRIORITY_IMPORTANT,
+							FreshRSS_Context::$search, FreshRSS_Context::$state, $is_read);
+						break;
+					case 'Z':
+						$entryDAO->markReadEntries($id_max, false, FreshRSS_Feed::PRIORITY_ARCHIVED, FreshRSS_Feed::PRIORITY_IMPORTANT,
+							FreshRSS_Context::$search, FreshRSS_Context::$state, $is_read);
+						break;
 					case 'i':
 						$entryDAO->markReadEntries($id_max, false, FreshRSS_Feed::PRIORITY_IMPORTANT, null,
 							FreshRSS_Context::$search, FreshRSS_Context::$state, $is_read);
@@ -106,7 +114,7 @@ class FreshRSS_entry_Controller extends FreshRSS_ActionController {
 						// so the next unread tag calculation is deferred by passing next_get = 'a' instead of the current get ID.
 						if ($next_get === 'a' && $is_read) {
 							$tagDAO = FreshRSS_Factory::createTagDao();
-							$tagsList = $tagDAO->listTags() ?: [];
+							$tagsList = $tagDAO->listTags();
 							$found_tag = false;
 							foreach ($tagsList as $tag) {
 								if ($found_tag) {
@@ -154,7 +162,7 @@ class FreshRSS_entry_Controller extends FreshRSS_ActionController {
 				}
 			}
 		} else {
-			/** @var array<numeric-string> $idArray */
+			/** @var list<numeric-string> $idArray */
 			$idArray = Minz_Request::paramArrayString('id');
 			$idString = Minz_Request::paramString('id');
 			if (count($idArray) > 0) {
@@ -166,10 +174,10 @@ class FreshRSS_entry_Controller extends FreshRSS_ActionController {
 			}
 			$entryDAO->markRead($ids, $is_read);
 			$tagDAO = FreshRSS_Factory::createTagDao();
-			$tagsForEntries = $tagDAO->getTagsForEntries($ids) ?: [];
+			$tagsForEntries = $tagDAO->getTagsForEntries($ids) ?? [];
 			$tags = [];
 			foreach ($tagsForEntries as $line) {
-				$tags['t_' . $line['id_tag']][] = $line['id_entry'];
+				$tags['t_' . $line['id_tag']][] = (string)$line['id_entry'];
 			}
 			$this->view->tagsForEntries = $tags;
 		}

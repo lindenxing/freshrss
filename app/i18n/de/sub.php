@@ -57,17 +57,18 @@ return array(
 			'prepend' => 'Artikelinhalt vor Feed-Inhalt hinzufügen',
 			'replace' => 'Artikelinhalt ersetzt Feed-Inhalt (Standard)',
 		),
+		'content_retrieval' => 'Content retrieval',	// TODO
 		'css_cookie' => 'Verwende Cookies beim Herunterladen des Feed-Inhalts mit CSS-Filtern',
 		'css_cookie_help' => 'Beispiel: <kbd>foo=bar; gdpr_consent=true; cookie=value</kbd>',
 		'css_help' => 'Ruft bei gekürzten RSS-Feeds den vollständigen Artikelinhalt ab (Achtung, benötigt mehr Zeit!)',
 		'css_path' => 'CSS-Selektor des Artikelinhaltes auf der Original-Webseite',
 		'css_path_filter' => array(
 			'_' => 'CSS-Selector für die Elemente, die entfernt werden sollen',
-			'help' => 'CSS-Selector könnte eine Liste sein, wie z.B.: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
+			'help' => 'CSS-Selector könnte eine Liste sein, wie z.B.: <kbd>footer, aside, p[data-sanitized-class~="menu"]</kbd>',
 		),
 		'description' => 'Beschreibung',
 		'empty' => 'Dieser Feed ist leer. Bitte stellen Sie sicher, dass er noch gepflegt wird.',
-		'error' => 'Dieser Feed ist auf ein Problem gestoßen. Bitte stellen Sie sicher, dass er immer lesbar ist und aktualisieren Sie ihn dann.',
+		'error' => 'Dieser Feed ist auf ein Problem gestoßen. Bitte stellen Sie sicher, dass er immer lesbar ist.',	// DIRTY
 		'export-as-opml' => array(
 			'download' => 'Download',	// IGNORE
 			'help' => 'XML Datei (ausgewählte Daten. <a href="https://freshrss.github.io/FreshRSS/en/developers/OPML.html" target="_blank">Siehe Dokumentation</a>)',
@@ -84,10 +85,10 @@ return array(
 		'kind' => array(
 			'_' => 'Art der Feed-Quelle',
 			'html_json' => array(
-				'_' => 'HTML + XPath + JSON dot notation (JSON in HTML)',	// TODO
+				'_' => 'HTML + XPath + JSON Punkt-Notation (JSON in HTML)',
 				'xpath' => array(
-					'_' => 'XPath for JSON in HTML',	// TODO
-					'help' => 'Example: <code>//script[@type="application/json"]</code>',	// TODO
+					'_' => 'XPath für JSON in HTML',
+					'help' => 'Beispiel: <code>//script[@type="application/json"]</code>',
 				),
 			),
 			'html_xpath' => array(
@@ -201,6 +202,7 @@ return array(
 		'no_selected' => 'Kein Feed ausgewählt.',
 		'number_entries' => '%d Artikel',
 		'open_feed' => 'Feed %s öffnen',
+		'path_entries_conditions' => 'Conditions for content retrieval',	// TODO
 		'priority' => array(
 			'_' => 'Sichtbarkeit',
 			'archived' => 'Nicht anzeigen (archiviert)',
@@ -229,14 +231,14 @@ return array(
 		'title_add' => 'Einen RSS-Feed hinzufügen',
 		'ttl' => 'Aktualisiere automatisch nicht öfter als',
 		'unicityCriteria' => array(
-			'_' => 'Article unicity criteria',	// TODO
-			'forced' => '<span title="Block the unicity criteria, even when the feed has duplicate articles">forced</span>',	// TODO
-			'help' => 'Relevant for invalid feeds.<br />⚠️ Changing the policy will create duplicates.',	// TODO
-			'id' => 'Standard ID (default)',	// TODO
-			'link' => 'Link',	// TODO
-			'sha1:link_published' => 'Link + Date',	// TODO
-			'sha1:link_published_title' => 'Link + Date + Title',	// TODO
-			'sha1:link_published_title_content' => 'Link + Date + Title + Content',	// TODO
+			'_' => 'Einzigartigkeit eines Artikels',
+			'forced' => '<span title="Einzigartikkeit-Einstellungen blockieren, selbst wenn der Feed Duplikat-Artikel hat">Erzwingen</span>',
+			'help' => 'Relevant für defekte Feeds.<br />⚠️ Änderungen werden Duplikate erzeugen.',
+			'id' => 'Standard ID (Standardeinstellung)',
+			'link' => 'Link',	// IGNORE
+			'sha1:link_published' => 'Link + Datum',
+			'sha1:link_published_title' => 'Link + Datum + Titel',
+			'sha1:link_published_title_content' => 'Link + Datum + Titel + Inhalt',
 		),
 		'url' => 'Feed-URL',
 		'useragent' => 'Browser User Agent für den Abruf des Feeds verwenden',
@@ -248,7 +250,7 @@ return array(
 	'import_export' => array(
 		'export' => array(
 			'_' => 'Exportieren',
-			'sqlite' => 'Download user database as SQLite',	// TODO
+			'sqlite' => 'Nutzer-Datenbank als SQLite herunterladen',
 		),
 		'export_labelled' => 'Artikel mit Labeln exportieren',
 		'export_opml' => 'Liste der Feeds exportieren (OPML)',
@@ -285,8 +287,9 @@ return array(
 		'add_dynamic_opml' => 'dynamisches OPML hinzufügen',
 		'add_feed' => 'Feed hinzufügen',
 		'add_label' => 'Label hinzufügen',
+		'add_opml_category' => 'OPML Kategoriename',
 		'delete_label' => 'Label löschen',
-		'feed_management' => 'Verwaltung der RSS-Feeds',
+		'feed_management' => 'RSS-Feeds verwalten',
 		'rename_label' => 'Label umbenennen',
 		'subscription_tools' => 'Abonnement-Tools',
 	),

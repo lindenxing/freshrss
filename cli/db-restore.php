@@ -34,7 +34,7 @@ try {
 	$_SESSION['bd_error'] = $ex->getMessage();
 }
 if (!$ok) {
-	fail('FreshRSS database error: ' . (empty($_SESSION['bd_error']) ? 'Unknown error' : $_SESSION['bd_error']));
+	fail('FreshRSS database error: ' . (is_string($_SESSION['bd_error'] ?? null) ? $_SESSION['bd_error'] : 'Unknown error'));
 }
 
 foreach (listUsers() as $username) {

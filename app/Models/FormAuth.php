@@ -14,7 +14,7 @@ class FreshRSS_FormAuth {
 		return password_verify($nonce . $hash, $challenge);
 	}
 
-	/** @return array<string> */
+	/** @return list<string> */
 	public static function getCredentialsFromCookie(): array {
 		$token = Minz_Session::getLongTermCookie('FreshRSS_login');
 		if (!ctype_alnum($token)) {

@@ -14,9 +14,9 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'Névtelen felhasználók olvashatják az alapértelmezett felhasználó cikkeit (%s)',
 		'allow_anonymous_refresh' => 'Névtelen felhasználok frissíthetik a cikkeket',
-		'api_enabled' => ' <abbr>API</abbr> elérés engedélyezése <small>(mobilalkalmazásokhoz szükséges)</small>',
+		'api_enabled' => ' <abbr>API</abbr> elérés engedélyezése <small>(mobilalkalmazásokhoz szükséges and sharing user queries)</small>',	// DIRTY
 		'form' => 'Webes űrlap (hagyományos, JavaScript szükséges hozzá)',
-		'http' => 'HTTP (haladó felhasználóknak HTTPS-el)',
+		'http' => 'HTTP (advanced: managed by Web server, OIDC, SSO…)',	// TODO
 		'none' => 'nincs (veszélyes)',
 		'title' => 'Hitelesítés',
 		'token' => 'Fő hitelesítési token',
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => 'Minden cikk',
 		'no_idle' => 'Nincsenek tétlen hírforrások!',
 		'number_entries' => '%d cikk',
+		'overview' => 'Overview',	// TODO
 		'percent_of_total' => '% az összesből',
-		'repartition' => 'Cikkek eloszlása',
+		'repartition' => 'Cikkek eloszlása: %s',
 		'status_favorites' => 'Kedvencek',
 		'status_read' => 'Olvasott',
 		'status_total' => 'Összes',

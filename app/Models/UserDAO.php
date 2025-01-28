@@ -8,6 +8,9 @@ class FreshRSS_UserDAO extends Minz_ModelPdo {
 
 		try {
 			$sql = $GLOBALS['SQL_CREATE_TABLES'];
+			if (!is_string($sql)) {
+				throw new Exception('SQL_CREATE_TABLES is not a string!');
+			}
 			$ok = $this->pdo->exec($sql) !== false;	//Note: Only exec() can take multiple statements safely.
 		} catch (Exception $e) {
 			$ok = false;
@@ -29,7 +32,11 @@ class FreshRSS_UserDAO extends Minz_ModelPdo {
 		}
 
 		require(APP_PATH . '/SQL/install.sql.' . $this->pdo->dbType() . '.php');
-		$ok = $this->pdo->exec($GLOBALS['SQL_DROP_TABLES']) !== false;
+		$sql = $GLOBALS['SQL_DROP_TABLES'];
+		if (!is_string($sql)) {
+			throw new Exception('SQL_DROP_TABLES is not a string!');
+		}
+		$ok = $this->pdo->exec($sql) !== false;
 
 		if ($ok) {
 			$this->close();

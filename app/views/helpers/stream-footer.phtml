@@ -2,7 +2,12 @@
 	declare(strict_types=1);
 	/** @var FreshRSS_View $this */
 	$url_next = Minz_Request::currentRequest();
-	$url_next['params']['next'] = FreshRSS_Context::$next_id;
+	if (FreshRSS_Context::$continuation_id !== '0') {
+		$url_next['params']['cid'] = FreshRSS_Context::$continuation_id;
+	}
+	if (FreshRSS_Context::$sort !== 'id') {
+		$url_next['params']['idMax'] = FreshRSS_Context::$id_max;
+	}
 	$url_next['params']['state'] = (string)FreshRSS_Context::$state;
 	$url_next['params']['ajax'] = '1';
 
@@ -27,7 +32,7 @@
 <div id="stream-footer">
 <?php }?>
 	<div class="stream-footer-inner">
-	<?php if (FreshRSS_Context::$next_id !== '') { ?>
+	<?php if (FreshRSS_Context::$continuation_id !== '0') { ?>
 		<button id="load_more" type="submit" class="btn" formaction="<?= Minz_Url::display($url_next) ?>"><?= _t('gen.stream.load_more') ?></button>
 	<?php } elseif ($hasAccess) { ?>
 		<?= _t('gen.stream.nothing_to_load') ?><br />

@@ -14,6 +14,16 @@ return array(
 	'about' => array(
 		'_' => 'À propos',
 		'agpl3' => '<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL 3</a>',	// IGNORE
+		'bug_reports' => array(
+			'environment_information' => array(
+				'_' => 'Informations système',
+				'browser' => 'Navigateur',
+				'database' => 'Base de données',
+				'server_software' => 'Serveur Web',
+				'version_frss' => 'Version de FreshRSS',
+				'version_php' => 'Version de PHP',
+			),
+		),
 		'bugs_reports' => 'Rapports de bugs',
 		'credits' => 'Crédits',
 		'credits_content' => 'Des éléments de design sont issus du <a href="http://twitter.github.io/bootstrap/">projet Bootstrap</a> bien que FreshRSS n’utilise pas ce framework. Les <a href="https://gitlab.gnome.org/Archive/gnome-icon-theme-symbolic">icônes</a> sont issues du <a href="https://www.gnome.org/">projet GNOME</a>. La police <em>Open Sans</em> utilisée a été créée par <a href="https://fonts.google.com/specimen/Open+Sans">Steve Matteson</a>. FreshRSS repose sur <a href="https://framagit.org/marienfressinaud/MINZ">Minz</a>, un framework PHP.',
@@ -27,6 +37,11 @@ return array(
 	),
 	'feed' => array(
 		'empty' => 'Il n’y a aucun article à afficher.',
+		'received' => array(
+			'before_yesterday' => 'Reçu avant avant-hier',
+			'today' => 'Reçu aujourd’hui',
+			'yesterday' => 'Reçu hier',
+		),
 		'rss_of' => 'Flux RSS de %s',
 		'title' => 'Flux principal',
 		'title_fav' => 'Favoris',
@@ -60,6 +75,18 @@ return array(
 		'reader_view' => 'Vue lecture',
 		'rss_view' => 'Flux RSS',
 		'search_short' => 'Rechercher',
+		'sort' => array(
+			'_' => 'Critère de tri',
+			'date_asc' => 'Date de publication 1→9',
+			'date_desc' => 'Date de publication 9→1',
+			'id_asc' => 'Reçus récemment en dernier',
+			'id_desc' => 'Reçus récemment en premier',
+			'link_asc' => 'Lien A→Z',
+			'link_desc' => 'Lien Z→A',
+			'rand' => 'Ordre aléatoire',
+			'title_asc' => 'Titre A→Z',
+			'title_desc' => 'Titre Z→A',
+		),
 		'starred' => 'Afficher les favoris',
 		'stats' => 'Statistiques',
 		'subscription' => 'Gestion des abonnements',

@@ -75,8 +75,8 @@ class FreshRSS_Auth {
 				if (!$login_ok && FreshRSS_Context::systemConf()->http_auth_auto_register) {
 					$email = null;
 					if (FreshRSS_Context::systemConf()->http_auth_auto_register_email_field !== '' &&
-						isset($_SERVER[FreshRSS_Context::systemConf()->http_auth_auto_register_email_field])) {
-						$email = (string)$_SERVER[FreshRSS_Context::systemConf()->http_auth_auto_register_email_field];
+						is_string($_SERVER[FreshRSS_Context::systemConf()->http_auth_auto_register_email_field] ?? null)) {
+						$email = $_SERVER[FreshRSS_Context::systemConf()->http_auth_auto_register_email_field];
 					}
 					$language = Minz_Translate::getLanguage(null, Minz_Request::getPreferredLanguages(), FreshRSS_Context::systemConf()->language);
 					Minz_Translate::init($language);

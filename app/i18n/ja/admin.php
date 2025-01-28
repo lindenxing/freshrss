@@ -14,9 +14,9 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'デフォルトのユーザーの記事がログインしていないときでも読めるようにします。 (%s)',
 		'allow_anonymous_refresh' => '未ログインユーザーでも記事を更新できるようにします。',
-		'api_enabled' => '<abbr>API</abbr>からのアクセスを許可する <small>(モバイルアプリが必要です)</small>',
+		'api_enabled' => '<abbr>API</abbr>アクセスを許可する <small>(モバイルアプリやユーザークエリの共有に必要)</small>',
 		'form' => 'ウェブフォーム (JavaScriptが必要です)',
-		'http' => 'HTTP (上級者はHTTPSでも)',
+		'http' => 'HTTP (advanced: managed by Web server, OIDC, SSO…)',	// TODO
 		'none' => 'なし (危険)',
 		'title' => '認証',
 		'token' => 'マスター認証用のトークン',
@@ -116,7 +116,7 @@ return array(
 		'description' => '説明',
 		'disabled' => '無効',
 		'empty_list' => 'インストールされている拡張機能はありません',
-		'empty_list_help' => 'Check the logs to determine the reason behind the empty extension list.',	// TODO
+		'empty_list_help' => '拡張機能リストが表示されない原因を特定するために、ログを確認してください。',
 		'enabled' => '有効',
 		'latest' => 'インストール済み',
 		'name' => '名前',
@@ -148,8 +148,9 @@ return array(
 		'main_stream' => '主なストリーム',
 		'no_idle' => '未使用のフィードはありません!',
 		'number_entries' => '%d 記事',
+		'overview' => 'Overview',	// TODO
 		'percent_of_total' => '% 総計',
-		'repartition' => '記事の仕切り',
+		'repartition' => '記事の仕切り: %s',	// DIRTY
 		'status_favorites' => 'お気に入り',
 		'status_read' => '既読',
 		'status_total' => 'すべて',

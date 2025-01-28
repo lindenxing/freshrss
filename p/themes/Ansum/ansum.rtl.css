@@ -878,51 +878,51 @@ main.prompt {
 }
 
 /*=== Content of feed articles */
-.content, .content.thin {
+.content, .content_thin {
 	padding: 20px 10px;
 	font-size: 1.125rem;
 	line-height: 1.8rem;
 }
-.content h1.title a, .content h1 a, .content.thin h1.title a, .content.thin h1 a {
+.content h1.title a, .content h1 a, .content_thin h1.title a, .content_thin h1 a {
 	color: #363330;
 	font-family: "spectral", serif;
 	font-size: 2rem;
 }
-.content h1.title a:hover, .content h1 a:hover, .content.thin h1.title a:hover, .content.thin h1 a:hover {
+.content h1.title a:hover, .content h1 a:hover, .content_thin h1.title a:hover, .content_thin h1 a:hover {
 	color: #ca7227;
 	text-decoration: none;
 }
-.content .author, .content.thin .author {
+.content .author, .content_thin .author {
 	color: #6d655f;
 	font-size: 1.125rem;
 }
-.content p, .content ul, .content.thin p, .content.thin ul {
+.content p, .content ul, .content_thin p, .content_thin ul {
 	font-size: 1.125rem;
 	line-height: 1.8rem;
 }
-.content .content hr, .content.thin .content hr {
+.content .content hr, .content_thin .content hr {
 	margin: 30px 10px;
 	background: #e4d8cc;
 	height: 1px;
 	border: 0;
 	box-shadow: 0 2px 5px #ccc;
 }
-.content pre, .content.thin pre {
+.content pre, .content_thin pre {
 	background: #221f1d;
 	color: #fff;
 	border-radius: 3px;
 }
-.content pre code, .content.thin pre code {
+.content pre code, .content_thin pre code {
 	background: transparent;
 	color: #fff;
 	border: none;
 }
-.content code, .content.thin code {
+.content code, .content_thin code {
 	background: #fcfaf8;
 	border-color: #f5f0ec;
 	border-radius: 3px;
 }
-.content blockquote, .content.thin blockquote {
+.content blockquote, .content_thin blockquote {
 	margin: 0;
 	padding: 5px 20px;
 	background: #fcfaf8;
@@ -931,7 +931,7 @@ main.prompt {
 	border-top: 1px solid #e4d8cc;
 	border-bottom: 1px solid #e4d8cc;
 }
-.content blockquote p, .content.thin blockquote p {
+.content blockquote p, .content_thin blockquote p {
 	margin: 0;
 }
 
@@ -1114,11 +1114,11 @@ main.prompt {
 	color: #363330;
 	border: none;
 }
-#stream.reader .flux .content {
+#stream.reader .flux .flux_content {
 	background-color: #fff;
 	border: none;
 }
-#stream.reader .flux .content .author {
+#stream.reader .flux .flux_content .author {
 	color: #ba9;
 }
 

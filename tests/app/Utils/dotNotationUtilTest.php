@@ -41,6 +41,6 @@ class dotNotationUtilTest extends PHPUnit\Framework\TestCase {
 	#[DataProvider('provideJsonDots')]
 	public static function testJsonDots(array $array, string $key, string $expected): void {
 		$value = FreshRSS_dotNotation_Util::get($array, $key);
-		self::assertEquals($expected, $value);
+		self::assertSame($expected, $value);
 	}
 }

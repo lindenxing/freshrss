@@ -129,11 +129,11 @@
 				<div class="group-controls">
 					<select class="w50" name="ttl" id="ttl" required="required"><?php
 						$found = false;
-						foreach (array(FreshRSS_Feed::TTL_DEFAULT => _t('gen.short.by_default'), 900 => '15min', 1200 => '20min', 1500 => '25min', 1800 => '30min', 2700 => '45min',
+						foreach ([FreshRSS_Feed::TTL_DEFAULT => _t('gen.short.by_default'), 900 => '15min', 1200 => '20min', 1500 => '25min', 1800 => '30min', 2700 => '45min',
 								3600 => '1h', 5400 => '1.5h', 7200 => '2h', 10800 => '3h', 14400 => '4h', 18800 => '5h', 21600 => '6h', 25200 => '7h', 28800 => '8h',
 								36000 => '10h', 43200 => '12h', 64800 => '18h',
 								86400 => '1d', 129600 => '1.5d', 172800 => '2d', 259200 => '3d', 345600 => '4d', 432000 => '5d', 518400 => '6d',
-								604800 => '1wk', 1209600 => '2wk', 1814400 => '3wk', 2419200 => '4wk', 2629744 => '1mo') as $v => $t) {
+								604800 => '1wk', 1209600 => '2wk', 1814400 => '3wk', 2419200 => '4wk', 2629744 => '1mo'] as $v => $t) {
 							echo '<option value="' . $v . ($this->feed->ttl() === $v ? '" selected="selected' : '') . '">' . $t . '</option>';
 							if ($this->feed->ttl() == $v) {
 								$found = true;
@@ -265,7 +265,8 @@
 			<div class="form-group">
 				<label class="group-name" for="filteractions_read"><?= _t('conf.reading.read.when') ?></label>
 				<div class="group-controls">
-					<textarea name="filteractions_read" id="filteractions_read" class="w100"><?php
+					<textarea name="filteractions_read" id="filteractions_read" class="w100"
+						placeholder="<?= _t('gen.short.blank_to_disable') ?>"><?php
 						foreach ($this->feed->filtersAction('read') as $filterRead) {
 							echo $filterRead->getRawInput(), PHP_EOL;
 						}
@@ -304,7 +305,7 @@
 			</div>
 			<?php
 				$archiving = $this->feed->attributeArray('archiving');
-				/** @var array<'default'?:bool,'keep_period'?:string,'keep_max'?:int,'keep_min'?:int,'keep_favourites'?:bool,'keep_labels'?:bool,'keep_unreads'?:bool>|null $archiving */
+				/** @var array{default?:bool,keep_period?:string,keep_max?:int,keep_min?:int,keep_favourites?:bool,keep_labels?:bool,keep_unreads?:bool}|null $archiving */
 				if (empty($archiving)) {
 					$archiving = [ 'default' => true ];
 				} else {
@@ -646,7 +647,7 @@
 		</fieldset>
 
 		<fieldset>
-			<legend><?= _t('sub.feed.advanced') ?></legend>
+			<legend><?= _t('sub.feed.content_retrieval') ?></legend>
 			<div class="form-group">
 				<label class="group-name" for="path_entries"><?= _t('sub.feed.css_path') ?></label>
 				<div class="group-controls">
@@ -660,6 +661,24 @@
 				</div>
 			</div>
 
+			<div class="form-group">
+				<label class="group-name" for="path_entries_conditions"><?= _t('sub.feed.path_entries_conditions') ?></label>
+				<div class="group-controls">
+					<textarea class="w100" id="path_entries_conditions" name="path_entries_conditions"
+						rows="3" cols="64" spellcheck="false" placeholder="<?= _t('gen.short.blank_to_disable') ?>"><?php
+						foreach ($this->feed->attributeArray('path_entries_conditions') ?? [] as $condition) {
+							if (is_string($condition)) {
+								echo htmlspecialchars($condition, ENT_NOQUOTES, 'UTF-8'), PHP_EOL;
+							}
+						}
+					?></textarea>
+					<p class="help"><?= _i('help') ?> <?= _t('sub.feed.filteractions.help') ?></p>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend><?= _t('sub.feed.advanced') ?></legend>
 			<div class="form-group">
 				<?php
 					$path_entries_filter = Minz_Helper::htmlspecialchars_utf8($this->feed->attributeString('path_entries_filter') ?? '');
@@ -721,7 +740,7 @@
 				<div class="group-controls">
 					<input type="text" name="curl_params_useragent" id="curl_params_useragent" class="w100" value="<?=
 						htmlspecialchars((string)($curlParams[CURLOPT_USERAGENT] ?? ''), ENT_COMPAT, 'UTF-8')
-					?>" placeholder="<?= _t('gen.short.blank_to_disable') ?>" />
+					?>" placeholder="<?= _t('gen.short.by_default') ?>" />
 					<p class="help"><?= _i('help') ?> <?= _t('sub.feed.useragent_help') ?></p>
 				</div>
 			</div>
@@ -731,14 +750,19 @@
 				<div class="group-controls">
 					<select name="proxy_type" id="proxy_type"><?php
 						$type = $curlParams[CURLOPT_PROXYTYPE] ?? '';
-						foreach (['' => '', 3 => 'NONE', 0 => 'HTTP', 2 => 'HTTPS', 4 => 'SOCKS4', 6 => 'SOCKS4A', 5 => 'SOCKS5', 7 => 'SOCKS5H'] as $k => $v) {
+						if ($type === 3) {	// Legacy for NONE
+							$type = -1;
+						}
+						foreach (['' => '', -1 => 'NONE', CURLPROXY_HTTP => 'HTTP', CURLPROXY_HTTPS => 'HTTPS',
+							CURLPROXY_SOCKS4 => 'SOCKS4', CURLPROXY_SOCKS4A => 'SOCKS4A', CURLPROXY_SOCKS5 => 'SOCKS5',
+							CURLPROXY_SOCKS5_HOSTNAME => 'SOCKS5H'] as $k => $v) {
 							echo '<option value="' . $k . ($type === $k ? '" selected="selected' : '' ) . '">' . $v . '</option>';
 						}
 					?>
 					</select>
 					<input type="text" name="curl_params" id="curl_params" value="<?=
 						htmlspecialchars((string)($curlParams[CURLOPT_PROXY] ?? ''), ENT_COMPAT, 'UTF-8')
-					?>" placeholder="<?= _t('gen.short.blank_to_disable') ?>" />
+					?>" placeholder="<?= _t('gen.short.by_default') ?>" />
 					<p class="help"><?= _i('help') ?> <?= _t('sub.feed.proxy_help') ?></p>
 				</div>
 			</div>

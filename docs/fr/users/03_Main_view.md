@@ -207,6 +207,7 @@ Il est possible d’utiliser le champ de recherche pour raffiner les résultats 
 * par ID de flux : `f:123` ou plusieurs flux (*ou*) : `f:123,234,345`
 * par auteur : `author:nom` ou `author:'nom composé'`
 * par titre : `intitle:mot` ou `intitle:'mot composé'`
+* par texte (contenu) : `intext:mot` ou `intext:'mot composé'`
 * par URL : `inurl:mot` ou `inurl:'mot composé'`
 * par tag : `#tag` ou `#'tag avec espace'`
 * par texte libre : `mot` ou `'mot composé'`
@@ -275,7 +276,7 @@ Enfin, les parenthèses peuvent être utilisées pour des expressions plus compl
 * `(author:Alice intitle:bonjour) !(author:Bob intitle:monde)`
 * `!(S:1 OR S:2)`
 
-> ℹ️ Si vous devez chercher une parenthèse, elle doit être *échappée* comme suit : `\(` ou `\)`
+> ℹ️ Si vous devez chercher une parenthèse, elle doit être *échappée* comme suit : `\(` ou `\)`, ou bien être au sein d’une chaîne de texte entre guillemets comme `"a (b)"`
 
 #### Regex
 
@@ -290,6 +291,8 @@ Le mode multilignes peut être activé avec l’option de recherche `m` comme : 
 > ℹ️ `#` fonctionne également avec un tag par line, ce qui fait que le mode multilignes peut être avantageux, comme : `#/^Hello World$/im`
 
 Exemple pour rechercher des articles dont le titre commence par le mot *Lol* avec un nombre indéterminé de *o*: `intitle:/^Lo+l/i`
+
+Exemple pour rechercher des articles dont le contenu est vide : `intext:/^\s*$/`
 
 Contrairement aux recherches normales, les caractères spéciaux XML `<&">` ne sont pas encodés dans les recherches regex, afin de permettre de chercher du code HTML, comme : `/Bonjour <span>à tous<\/span>/`
 

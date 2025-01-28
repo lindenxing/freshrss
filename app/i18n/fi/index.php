@@ -14,6 +14,16 @@ return array(
 	'about' => array(
 		'_' => 'Tietoja',
 		'agpl3' => '<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL 3</a>',	// IGNORE
+		'bug_reports' => array(
+			'environment_information' => array(
+				'_' => 'System information',	// TODO
+				'browser' => 'Browser',	// TODO
+				'database' => 'Database',	// TODO
+				'server_software' => 'Server software',	// TODO
+				'version_frss' => 'FreshRSS version',	// TODO
+				'version_php' => 'PHP version',	// TODO
+			),
+		),
 		'bugs_reports' => 'Virheraportit',
 		'credits' => 'Tekijät',
 		'credits_content' => 'Jotkin suunnitteluelementit perustuvat <a href="http://twitter.github.io/bootstrap/">Bootstrapiin</a>, mutta FreshRSS ei käytä tätä kehystä. <a href="https://gitlab.gnome.org/Archive/gnome-icon-theme-symbolic">Kuvakkeet</a> tulevat <a href="https://www.gnome.org/">GNOME-projektista</a>. <em>Open Sans</em> -fontin on luonut <a href="https://fonts.google.com/specimen/Open+Sans">Steve Matteson</a>. FreshRSS perustuu PHP-kehykseen <a href="https://framagit.org/marienfressinaud/MINZ">Minz</a>.',
@@ -27,6 +37,11 @@ return array(
 	),
 	'feed' => array(
 		'empty' => 'Näytettäviä artikkeleita ei ole.',
+		'received' => array(
+			'before_yesterday' => 'Received before yesterday',	// TODO
+			'today' => 'Received today',	// TODO
+			'yesterday' => 'Received yesterday',	// TODO
+		),
 		'rss_of' => 'Sivuston %s RSS-syöte',
 		'title' => 'Pääsyötevirta',
 		'title_fav' => 'Suosikit',
@@ -60,6 +75,18 @@ return array(
 		'reader_view' => 'Lukunäkymä',
 		'rss_view' => 'RSS-syöte',
 		'search_short' => 'Haku',
+		'sort' => array(
+			'_' => 'Sorting criteria',	// TODO
+			'date_asc' => 'Publication date 1→9',	// TODO
+			'date_desc' => 'Publication date 9→1',	// TODO
+			'id_asc' => 'Freshly received last',	// TODO
+			'id_desc' => 'Freshly received first',	// TODO
+			'link_asc' => 'Link A→Z',	// TODO
+			'link_desc' => 'Link Z→A',	// TODO
+			'rand' => 'Random order',	// TODO
+			'title_asc' => 'Title A→Z',	// TODO
+			'title_desc' => 'Title Z→A',	// TODO
+		),
 		'starred' => 'Näytä suosikit',
 		'stats' => 'Tilastot',
 		'subscription' => 'Tilausten hallinta',

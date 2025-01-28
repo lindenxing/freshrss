@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 /** @var FreshRSS_View $this */
+@ob_end_clean();	// Ensure no buffer
 header('Content-Type: application/vnd.sqlite3');
 header('Content-Disposition: attachment; filename="' . basename($this->sqlitePath) . '"');
 header('Cache-Control: private, no-store, max-age=0');
